@@ -1,0 +1,85 @@
+alias v="~/nvim.appimage"
+alias c="clear"
+alias f="nautilus ."
+alias t="tmux"
+
+# Git aliases
+
+alias gi="git init"              # create an empty Git repository or reinitialize an existing one
+
+# Staging
+alias ga="git add"                            # stage file(s)
+alias gad='git add $(git ls-files --deleted)' # add all deleted files
+alias gua="git restore --staged"              # unstage file(s)
+
+# Commit
+alias Gc="git commit"            # open text editor for commit message & commit
+alias gcm="git commit --message" # commit message on command & commit
+alias gcd="git commit --verbose" # show unified diff between the HEAD commit and what would be committed at the bottom of the commit message
+alias gcfast="git commit -a"     # stages everything and commit
+alias gca="git commit --amend --no-edit"   # replace the tip of the current branch by creating a new commit.
+alias gitOopsieDaisy=git add -A && git commit --amend --no-edit && git push --force
+
+# Removing, moving and undoing
+alias gundo="git checkout --"    # discard changes in working directory
+alias grm="git rm"               # remove files matching pathspec from the index, or from the working tree and the index
+alias gmv="git mv"               # move or rename a file, directory or symlink
+
+# Status
+alias Gs="git status"            # status long
+alias gss="git status --short"   # status short
+
+# Logging
+alias gl="git log"                                      # default log
+alias gls="git log --stat"                              # log with a diffstat
+alias glp="git log --patch"                             # log and generate patch
+alias glo="git log --pretty=oneline"                    # logs one commit per line
+alias glG="git log --oneline --decorate --graph --all"  # logs graph, one commit per line
+alias glS="git log -S"                                  # search regex and log
+alias glb="git branch -v"                               # logs last commit in each branch
+
+# Git diff
+alias gdiff="git diff"             # diff between last commit and unstaged file
+alias gdiffs="git diff --staged"   # diff between staged file and last commit
+
+# Remotes
+alias grlist="git remote -v"                # list remotes
+alias grd="git push origin --delete"    # delete remote branch
+alias grs="git remote show"             # information about the remote name
+alias grr="git remote rename"           # rename the remote
+alias gclone="git clone"                # git clone remote
+alias gfetch="git fetch"                # git fetch remote (does not merge)
+alias gpush="git push"                  # push to remote
+alias gpull="git pull"                  # pull (fetch and merge)
+
+# Branching
+alias gb="git branch"                # list branches
+alias gbmerged="git branch --merged" # filter the list of branches to branches that you have merged
+alias gcout="git checkout"           # switch to branch
+alias gcb="git checkout -b"          # create and checkout branch
+alias gm="git merge"                 # merge branch
+alias gbdelete="git branch -d"       # delete branch
+alias gbdeleteFORCE="git branch -D"  # delete branch even if not merged
+
+# Config alias for dotfiles bare repo
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+# Work stuff
+alias bbtest="docker exec -it bipa-btc_testnet-1  bitcoin-cli -rpcuser=dev -rpcpassword=dev -rpcport=18332"
+alias bbreg="bitcoin-cli -rpcuser=dev -rpcpassword=dev -rpcport=18443"
+alias blntest="docker exec -it bipa-lnd-1 lncli --network=testnet --rpcserver lnd:10009 --no-macaroons"
+alias bdb="docker exec -it bipa-database-1 psql postgres://postgres:bipa@localhost/bipa"
+
+# Gh CLI Aliases
+alias openpr='gh pr create --assignee "lorenzolfm" --reviewer "lsunsi,lochetti" --title'
+
+# Diesel migration
+alias dm="diesel migration"
+
+# exa
+alias li='exa --icons'
+alias lt='exa --tree --level=2 --long --icons --git'
+
+# cargo helpers
+alias ccwa='cargo check --workspace --all-targets'
+alias ccb='cargo check --workspace --all-targets && cargo build --workspace --all-targets'

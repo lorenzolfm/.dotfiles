@@ -1,0 +1,142 @@
+default_border pixel 0
+font pango:FiraCode Nerd Font Bold 10
+floating_modifier $mod
+mouse_warping none
+
+gaps inner 15
+
+set $mod Mod1
+
+set $ws1 "Terminal"
+set $ws2 "Browser"
+set $ws3 "Slack"
+set $ws4 "Chill"
+set $ws5 "Dev Utils"
+set $ws6 "Second Monitor"
+set $ws7 "Chat"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+set $fm DP-4
+set $sm HDMI-0
+
+set $refresh_i3status killall -SIGUSR1 i3status
+
+set $BLACK "#282c34"
+set $BLUE "#61afef"
+set $YELLOW "#e5c07b"
+set $RED "#e06c75"
+set $WHITE "#aab2bf"
+set $GREEN "#98c379"
+set $VISUAL_GREY "#3e4452"
+set $COMMENT_GREY "#5c6370"
+set $BACKGROUND_COLOR "#282828"
+
+client.focused $BLACK $GREEN $BACKGROUND_COLOR $BLACK
+client.focused_inactive $BLACK $YELLOW $BACKGROUND_COLOR $GREEN
+client.unfocused $BLACK $BLACK $WHITE $BLACK
+client.urgent $BLACK $RED $YELLOW $BLACK
+
+assign [class="Gnome-terminal"] $ws1
+assign [class="Brave-browser"] $ws2
+assign [class="Slack"] $ws3
+assign [class="Spotify"] $ws4
+assign [class="Postman"] $ws5
+assign [class="DBeaver"] $ws5
+assign [class="discord"] $ws7
+assign [class="TelegramDesktop"] $ws7
+
+workspace $ws1 output $fm
+workspace $ws2 output $fm
+workspace $ws3 output $fm
+workspace $ws4 output $fm
+workspace $ws5 output $fm
+workspace $ws6 output $sm
+workspace $ws7 output $fm
+workspace $ws8 output $fm
+workspace $ws9 output $fm
+workspace $ws10 output $fm
+
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id nm-applet
+exec --no-startup-id xrandr --output HDMI-0 --rotate left --auto --pos 0x0 --output DP-4 --auto --pos 3840x0
+exec --no-startup-id dbus-update-activation-environment --all
+exec --no-startup-id gnome-keyring-daemon --start --components=secrets
+exec --no-startup-id gnome-terminal
+exec --no-startup-id brave-browser
+exec --no-startup-id slack
+exec --no-startup-id discord
+exec --no-startup-id telegram-desktop
+exec --no-startup-id spotify
+exec --no-startup-id picom
+exec --no-startup-id bash ~/.config/polybar/launch.sh
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Shift+q kill
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift-v split h
+bindsym $mod+v split v
+bindsym $mod+f fullscreen toggle
+bindsym $mod+w layout tabbed
+bindsym $mod+Shift+w layout toggle split
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+bindsym Print exec gnome-screenshot -i
+bindsym $mod+Print exec gnome-screenshot -a
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/.config/rofi/config.rasi -show-icons
+bindsym $mod+s exec --no-startup-id rofi -show window -theme ~/.config/rofi/config.rasi -show-icons
+bindsym $mod+b exec --no-startup-id rofi -show filebrowser -theme ~/.config/rofi/config.rasi -show-icons
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        bindsym $mod+Shift+h resize shrink width 10 px or 10 ppt
+        bindsym $mod+Shift+j resize grow height 10 px or 10 ppt
+        bindsym $mod+Shift+k resize shrink height 10 px or 10 ppt
+        bindsym $mod+Shift+l resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"

@@ -1,7 +1,9 @@
 local builtin = require('telescope.builtin')
 -- Finder
-vim.keymap.set('n', '<leader>ff', builtin.git_files, {})
-vim.keymap.set('n', '<leader>fa', builtin.find_files, {})
+vim.keymap.set('n', '<leader>ff',
+    function() builtin.git_files({ find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' } }) end, {})
+vim.keymap.set('n', '<leader>fa',
+    function() builtin.find_files({ find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' } }) end, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fo', builtin.oldfiles, {})

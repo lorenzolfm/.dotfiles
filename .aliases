@@ -71,7 +71,7 @@ alias blntest="docker exec -it bipa-lnd-1 lncli --network=testnet --rpcserver ln
 alias bdb="docker exec -it bipa-database-1 psql postgres://postgres:bipa@localhost/bipa"
 
 # Gh CLI Aliases
-alias openpr='gh pr create --assignee "lorenzolfm" --reviewer "lsunsi,lochetti" --title'
+alias openpr='gh pr create --assignee "lorenzolfm" --reviewer "lsunsi,lochetti,oleonardolima,brunojabs" --title'
 
 # Diesel migration
 alias dm="diesel migration"

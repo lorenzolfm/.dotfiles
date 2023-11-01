@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Bipa Admin
+Exec=/home/lorenzo/Applications/bipa-admin.AppImage
+Terminal=false
+Categories=Utility;Application;

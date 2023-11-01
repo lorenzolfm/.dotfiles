@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Audacity
+Exec=/home/lorenzo/Applications/audacity.AppImage
+Terminal=false
+Categories=Utility;Application;

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Polar
+Exec=/home/lorenzo/Applications/Polar.AppImage
+Terminal=false
+Categories=Utility;Application;

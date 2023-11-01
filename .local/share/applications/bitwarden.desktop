@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Bitwarden
+Exec=/home/lorenzo/Applications/Bitwarden.AppImage
+Terminal=false
+Categories=Utility;Application;

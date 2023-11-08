@@ -18,6 +18,19 @@ lsp_zero.set_sign_icons({
     info = 'ℹ️',
 })
 
+local ensure_installed = {
+    'bashls',
+    'bufls',
+    'eslint',
+    'jsonls',
+    'lua_ls',
+    'rust_analyzer',
+    'svelte',
+    'tailwindcss',
+    'tsserver',
+    'sqlls',
+}
+
 local lsp_servers_with_single_file_support = {
     'bashls',
     'bufls',
@@ -36,18 +49,7 @@ setup_lsp_servers(lsp_servers_with_single_file_support)
 
 mason.setup({})
 mason_lspconfig.setup({
-    ensure_installed = {
-        'bashls',
-        'bufls',
-        'eslint',
-        'jsonls',
-        'lua_ls',
-        'rust_analyzer',
-        'svelte',
-        'tailwindcss',
-        'tsserver',
-        'sqlls',
-    },
+    ensure_installed,
     handlers = {
         lsp_zero.default_setup,
     }

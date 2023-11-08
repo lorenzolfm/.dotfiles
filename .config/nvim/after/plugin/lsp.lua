@@ -1,8 +1,11 @@
 local lsp_zero = require('lsp-zero')
+local lspconfig = require('lspconfig')
+local mason = require('mason');
+local mason_lspconfig = require('mason-lspconfig');
+local cmp = require('cmp')
+local lspsaga = require('lspsaga')
 
 lsp_zero.on_attach(function(_, bufnr)
-    -- see :help lsp-zero-keybindings
-    -- to learn the available actions
     lsp_zero.default_keymaps({ buffer = bufnr })
 
     lsp_zero.buffer_autoformat()
@@ -15,40 +18,48 @@ lsp_zero.set_sign_icons({
     info = 'ℹ️',
 })
 
-require('mason').setup({})
-require('mason-lspconfig').setup({
+mason.setup({})
+mason_lspconfig.setup({
     ensure_installed = {
-        'svelte',
-        'tsserver',
-        'eslint',
-        'rust_analyzer',
-        'jsonls',
         'bashls',
+        'bufls',
+        'eslint',
+        'jsonls',
+        'lua_ls',
+        'rust_analyzer',
+        'svelte',
         'tailwindcss',
+        'tsserver',
     },
     handlers = {
         lsp_zero.default_setup,
 
         lua_ls = function()
             local lua_opts = lsp_zero.nvim_lua_ls()
-            require('lspconfig').lua_ls.setup(lua_opts)
+            lspconfig.lua_ls.setup(lua_opts)
         end,
 
         sqlls = function()
-            require('lspconfig').sqlls.setup({
+            lspconfig.sqlls.setup({
                 single_file_support = true,
             })
         end,
 
         bashls = function()
-            require('lspconfig').bashls.setup({
+            lspconfig.bashls.setup({
                 single_file_support = true,
             })
         end,
+
+        bufls = function()
+            lspconfig.bufls.setup({
+                single_file_support = true,
+            })
+        end,
+
     }
 })
 
-local cmp = require('cmp')
 local cmp_format = lsp_zero.cmp_format()
 
 cmp.setup({
@@ -60,16 +71,11 @@ cmp.setup({
         { name = 'vim-dadbod-completion' },
     },
     mapping = cmp.mapping.preset.insert({
-        -- scroll up and down the documentation window
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
-        --['<Tab>'] = cmp.mapping.select_next_item(),
-        --['<S-Tab>'] = cmp.mapping.select_prev_item(),
         ['<C-u>'] = cmp.mapping.scroll_docs(-4),
         ['<C-d>'] = cmp.mapping.scroll_docs(4),
     }),
 })
-
-local lspsaga = require('lspsaga')
 
 lspsaga.setup({
     event = 'LspAttach',

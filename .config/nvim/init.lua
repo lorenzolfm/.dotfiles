@@ -1,4 +1,4 @@
 require("lorenzo")
 
-vim.o.background = "dark"
+--vim.o.background = "dark"
 vim.cmd([[colorscheme gruvbox]])

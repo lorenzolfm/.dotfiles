@@ -1,3 +1,3 @@
 require("lorenzo.remap")
-require("lorenzo.packer")
+require("lorenzo.plugins")
 require("lorenzo.set")

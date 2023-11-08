@@ -18,6 +18,22 @@ lsp_zero.set_sign_icons({
     info = 'ℹ️',
 })
 
+local lsp_servers_with_single_file_support = {
+    'bashls',
+    'bufls',
+    'sqlls',
+}
+
+local function setup_lsp_servers(servers)
+    for _, server in ipairs(servers) do
+        lspconfig[server].setup({
+            single_file_support = true,
+        })
+    end
+end
+
+setup_lsp_servers(lsp_servers_with_single_file_support)
+
 mason.setup({})
 mason_lspconfig.setup({
     ensure_installed = {
@@ -30,33 +46,10 @@ mason_lspconfig.setup({
         'svelte',
         'tailwindcss',
         'tsserver',
+        'sqlls',
     },
     handlers = {
         lsp_zero.default_setup,
-
-        lua_ls = function()
-            local lua_opts = lsp_zero.nvim_lua_ls()
-            lspconfig.lua_ls.setup(lua_opts)
-        end,
-
-        sqlls = function()
-            lspconfig.sqlls.setup({
-                single_file_support = true,
-            })
-        end,
-
-        bashls = function()
-            lspconfig.bashls.setup({
-                single_file_support = true,
-            })
-        end,
-
-        bufls = function()
-            lspconfig.bufls.setup({
-                single_file_support = true,
-            })
-        end,
-
     }
 })
 

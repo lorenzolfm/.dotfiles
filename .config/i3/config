@@ -58,7 +58,6 @@ workspace $ws8 output $fm
 workspace $ws9 output $fm
 workspace $ws10 output $fm
 
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id xrandr --output HDMI-0 --rotate left --auto --pos 0x0 --output DP-4 --auto --pos 3840x0
 exec --no-startup-id dbus-update-activation-environment --all

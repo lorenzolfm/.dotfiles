@@ -45,6 +45,16 @@ local function setup_lsp_servers(servers)
     end
 end
 
+lspconfig.sumneko_lua.setup({
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' },
+            },
+        }
+    }
+})
+
 setup_lsp_servers(lsp_servers_with_single_file_support)
 
 mason.setup({})

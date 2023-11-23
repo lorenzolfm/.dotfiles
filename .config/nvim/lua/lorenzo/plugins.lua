@@ -36,6 +36,7 @@ local plugins = {
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-cmdline',
     'L3MON4D3/LuaSnip',
+    'j-hui/fidget.nvim',
     {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate'
@@ -55,17 +56,6 @@ local plugins = {
             'MunifTanjim/nui.nvim',
             'rcarriga/nvim-notify',
         }
-    },
-    {
-        'j-hui/fidget.nvim',
-        version = 'legacy',
-    },
-    {
-        'ggandor/leap.nvim',
-        dependencies = 'tpope/vim-repeat',
-        config = function()
-            require('leap').add_default_mappings();
-        end
     },
     {
         'ThePrimeagen/harpoon',

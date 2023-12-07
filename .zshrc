@@ -33,3 +33,9 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export TERM=xterm-256color
 
 SPACESHIP_PROMPT_ASYNC=false
+
+if [[ "$USER" == "lorenzomaturano" ]]; then
+  alias v='nvim'
+else
+  alias v='~/nvim.appimage'
+fi

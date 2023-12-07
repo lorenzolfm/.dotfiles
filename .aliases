@@ -1,4 +1,3 @@
-alias v="~/nvim.appimage"
 alias c="clear"
 alias f="nautilus ."
 alias t="tmux"
@@ -83,3 +82,4 @@ alias lt='exa --tree --level=2 --long --icons --git'
 # cargo helpers
 alias ccwa='cargo check --workspace --all-targets'
 alias ccb='cargo check --workspace --all-targets && cargo build --workspace --all-targets'
+alias call='cargo check --workspace --all-targets && cargo build --workspace --all-targets && ./scripts/test && ./scripts/clippy'

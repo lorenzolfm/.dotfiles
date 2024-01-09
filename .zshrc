@@ -14,6 +14,7 @@ plugins=(
 	colorize
 	zsh-autosuggestions
 	node
+    fzf-zsh-plugin
 )
 
 if [ -f ~/.aliases ]; then
@@ -39,3 +40,5 @@ if [[ "$USER" == "lorenzomaturano" ]]; then
 else
   alias v='~/nvim.appimage'
 fi
+
+export FZF_PREVIEW_ADVANCED=true

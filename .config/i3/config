@@ -1,7 +1,6 @@
 default_border pixel 0
 font pango:FiraCode Nerd Font Bold 10
 floating_modifier $mod
-mouse_warping none
 
 gaps inner 15
 

@@ -1,3 +1,5 @@
+local telescope = require('telescope').load_extension('changed_files')
+
 local builtin = require('telescope.builtin')
 -- Finder
 vim.keymap.set('n', '<leader>ff',
@@ -14,6 +16,7 @@ vim.keymap.set('n', '<leader>gc', builtin.git_commits, {})
 vim.keymap.set('n', '<leader>gx', builtin.git_stash, {})
 vim.keymap.set('n', '<leader>gs', builtin.git_status, {})
 vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
+vim.keymap.set('n', '<leader>gf', telescope.changed_files, {})
 
 -- Grep
 vim.keymap.set('n', '<leader>fs', builtin.grep_string, {})

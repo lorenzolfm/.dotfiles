@@ -15,4 +15,4 @@ vim.keymap.set('n', '<leader>h4', function() hui.nav_file(4) end, {})
 
 local th = require('telescope').load_extension('harpoon')
 
-vim.keymap.set('n', '<leader>tm', th.marks, {})
+vim.keymap.set('n', '<leader>fm', th.marks, {})

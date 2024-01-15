@@ -80,6 +80,7 @@ alias li='exa --icons'
 alias lt='exa --tree --level=2 --long --icons --git'
 
 # cargo helpers
+alias cclean='cargo clean'
 alias ccwa='cargo check --workspace --all-targets'
 alias ccb='cargo check --workspace --all-targets && cargo build --workspace --all-targets'
 alias call='cargo check --workspace --all-targets && \

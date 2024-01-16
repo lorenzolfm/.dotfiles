@@ -38,7 +38,7 @@ client.unfocused $BLACK $BLACK $WHITE $BLACK
 client.urgent $BLACK $RED $YELLOW $BLACK
 
 assign [class="Gnome-terminal"] $ws1
-assign [class="Brave-browser"] $ws2
+assign [class="Google-chrome"] $ws2
 assign [class="Slack"] $ws3
 assign [class="Spotify"] $ws4
 assign [class="Postman"] $ws5
@@ -68,7 +68,7 @@ exec --no-startup-id gnome-terminal
 exec --no-startup-id gnome-terminal
 exec --no-startup-id gnome-terminal
 
-exec --no-startup-id brave-browser
+exec --no-startup-id google-chrome
 exec --no-startup-id slack
 exec --no-startup-id discord
 exec --no-startup-id telegram-desktop

@@ -92,3 +92,6 @@ alias call='cargo check --workspace --all-targets && \
 alias setwacom="xsetwacom set 'Wacom Bamboo One S Pen stylus' Rotate half && \
     xsetwacom set 'Wacom Bamboo One S Pen stylus' MapToOutput next && \
     xsetwacom set 'Wacom Bamboo One S Pen stylus' MapToOutput next"
+
+alias uuid="uuidgen | tr -d '[:space:]' | xclip -selection clipboard"
+alias copy="xclip -selection clipboard"

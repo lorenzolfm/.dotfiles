@@ -3,7 +3,7 @@
     "floating": "auto_off",
     "layout": "splitv",
     "marks": [],
-    "percent": 0.2,
+    "percent": 0.25,
     "type": "con",
     "nodes": [
         {
@@ -71,7 +71,7 @@
     },
     "marks": [],
     "name": "Terminal",
-    "percent": 0.8,
+    "percent": 0.75,
     "swallows": [
         {
             "class": "^Gnome-terminal$"

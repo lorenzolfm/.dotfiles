@@ -27,8 +27,5 @@ style = 'bold yellow'
 [git_metrics]
 disabled = false
 
-[cmd_duration]
-show_notifications = true
-
 [sudo]
 disabled = false

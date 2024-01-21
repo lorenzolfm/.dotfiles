@@ -148,3 +148,5 @@ bindsym $mod+r mode "resize"
 
 bindsym $mod+n exec --no-startup-id dunstctl history-pop
 bindsym $mod+c exec --no-startup-id dunstctl close
+
+bindsym $mod+p exec --no-startup-id playerctl play-pause

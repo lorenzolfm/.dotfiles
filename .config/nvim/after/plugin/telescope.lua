@@ -1,8 +1,6 @@
 local t = require('telescope')
 local tb = require('telescope.builtin')
 
-t.load_extension('git_worktree')
-
 -- Finder
 vim.keymap.set('n', '<leader>ff',
     function() tb.git_files({ find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' } }) end, {})
@@ -18,8 +16,6 @@ vim.keymap.set('n', '<leader>gc', tb.git_commits, {})
 vim.keymap.set('n', '<leader>gx', tb.git_stash, {})
 vim.keymap.set('n', '<leader>gs', tb.git_status, {})
 vim.keymap.set('n', '<leader>gb', tb.git_branches, {})
-vim.keymap.set('n', '<leader>gw', t.extensions.git_worktree.git_worktrees, {})
-vim.keymap.set('n', '<leader>ga', t.extensions.git_worktree.create_git_worktree, {})
 vim.keymap.set('n', '<leader>gf', t.load_extension('changed_files').changed_files, {})
 
 -- Grep

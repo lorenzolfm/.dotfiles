@@ -25,7 +25,6 @@ local plugins = {
     'simrat39/rust-tools.nvim',
     'nvimdev/lspsaga.nvim',
     'github/copilot.vim',
-    'windwp/nvim-autopairs',
     'ellisonleao/carbon-now.nvim',
     'kristijanhusak/vim-dadbod-completion',
     'williamboman/mason.nvim',

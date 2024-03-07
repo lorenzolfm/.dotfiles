@@ -17,7 +17,7 @@ alias gcm="git commit --message" # commit message on command & commit
 alias gcd="git commit --verbose" # show unified diff between the HEAD commit and what would be committed at the bottom of the commit message
 alias gcfast="git commit -a"     # stages everything and commit
 alias gca="git commit --amend --no-edit"   # replace the tip of the current branch by creating a new commit.
-alias gitOopsieDaisy=git add -A && git commit --amend --no-edit && git push --force
+alias gitOopsieDaisy="git add -all && git commit --amend --no-edit && git push --force-with-lease"
 
 # Removing, moving and undoing
 alias gundo="git checkout --"    # discard changes in working directory

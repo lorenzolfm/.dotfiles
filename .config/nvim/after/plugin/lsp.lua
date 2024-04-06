@@ -28,13 +28,18 @@ local ensure_installed = {
     'svelte',
     'tailwindcss',
     'tsserver',
+    'mesonlsp',
+    'bufls',
+    'html',
     'sqlls',
+    'tsserver',
 }
 
 local lsp_servers_with_single_file_support = {
     'bashls',
     'bufls',
-    'sqlls',
+    'bufls',
+    'jsonls',
 }
 
 local function setup_lsp_servers(servers)
@@ -85,4 +90,7 @@ cmp.setup({
 lspsaga.setup({
     event = 'LspAttach',
     request_timeout = 10000,
+    lightbulb = {
+        virtual_text = false,
+    },
 })

@@ -1,5 +1,6 @@
 local keymap = vim.keymap.set
 keymap("n", "gh", "<cmd>Lspsaga finder<CR>")
+keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
 keymap({ "n", "v" }, "<leader>aa", "<cmd>Lspsaga code_action<CR>")
 keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
 keymap("n", "<leader>d", "<cmd>Lspsaga show_line_diagnostics<CR>")

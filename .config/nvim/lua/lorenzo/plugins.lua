@@ -22,7 +22,6 @@ local plugins = {
     'scrooloose/nerdcommenter',
     'simrat39/rust-tools.nvim',
     'nvimdev/lspsaga.nvim',
-    'github/copilot.vim',
     'ellisonleao/carbon-now.nvim',
     'kristijanhusak/vim-dadbod-completion',
     'williamboman/mason.nvim',

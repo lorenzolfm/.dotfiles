@@ -42,3 +42,7 @@ fi
 export FZF_PREVIEW_ADVANCED=true
 
 eval "$(starship init zsh)"
+
+export PATH=$PATH:/usr/local/go/bin
+
+export EDITOR=~/nvim.appimage

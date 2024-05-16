@@ -36,6 +36,17 @@ local plugins = {
     'j-hui/fidget.nvim',
     'axkirillov/telescope-changed-files',
     {
+        'stevearc/oil.nvim',
+        config = function()
+            require('oil').setup {
+                view_options = {
+                    show_hidden = true
+                }
+            }
+            vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+        end
+    },
+    {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate'
     },
@@ -76,7 +87,7 @@ local plugins = {
             { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
             { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
         },
-    }
+    },
 }
 
 require("lazy").setup(plugins, {})

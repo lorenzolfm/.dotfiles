@@ -22,4 +22,3 @@ require("gruvbox").setup({
     dim_inactive = false,
     transparent_mode = false,
 })
-vim.cmd("colorscheme gruvbox")

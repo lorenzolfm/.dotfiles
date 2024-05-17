@@ -50,7 +50,7 @@ local function setup_lsp_servers(servers)
     end
 end
 
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
     settings = {
         Lua = {
             diagnostics = {

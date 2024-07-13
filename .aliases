@@ -70,7 +70,7 @@ alias blntest="docker exec -it bipa-lnd-1 lncli --network=testnet --rpcserver ln
 alias bdb="docker exec -it bipa-database-1 psql postgres://postgres:bipa@localhost/bipa"
 
 # Gh CLI Aliases
-alias openpr='gh pr create --assignee "lorenzolfm" --reviewer "lsunsi,nicolasauler,pcarvsilva,guissalustiano" --title'
+alias openpr='gh pr create --assignee "lorenzolfm" --reviewer "lsunsi,nicolasauler,guissalustiano" --title'
 
 # Diesel migration
 alias dm="diesel migration"
@@ -86,9 +86,9 @@ alias ccwa='cargo check --workspace --all-targets'
 alias ccb='cargo check --workspace --all-targets && cargo build --workspace --all-targets'
 alias call='cargo check --workspace --all-targets && \
     cargo build --workspace --all-targets && \
-    ./scripts/test --test-threads=1 && \
+    ./scripts/test.sh --test-threads=1 && \
     cargo clippy --locked --workspace --all-targets -- -D warnings && \
-    ./scripts/check-allows'
+    ./scripts/check-allows.sh'
 
 alias setwacom="xsetwacom set 'Wacom Bamboo One S Pen stylus' Rotate half && \
     xsetwacom set 'Wacom Bamboo One S Pen stylus' MapToOutput next && \

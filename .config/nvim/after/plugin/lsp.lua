@@ -7,7 +7,6 @@ local lspsaga = require('lspsaga')
 
 lsp_zero.on_attach(function(_, bufnr)
     lsp_zero.default_keymaps({ buffer = bufnr })
-
     lsp_zero.buffer_autoformat()
 end)
 
@@ -20,7 +19,6 @@ lsp_zero.set_sign_icons({
 
 local ensure_installed = {
     'bashls',
-    'bufls',
     'eslint',
     'jsonls',
     'lua_ls',
@@ -29,7 +27,6 @@ local ensure_installed = {
     'tailwindcss',
     'tsserver',
     'mesonlsp',
-    'bufls',
     'html',
     'sqlls',
     'tsserver',
@@ -37,8 +34,6 @@ local ensure_installed = {
 
 local lsp_servers_with_single_file_support = {
     'bashls',
-    'bufls',
-    'bufls',
     'jsonls',
 }
 

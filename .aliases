@@ -66,7 +66,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # Work stuff
 alias bbtest="docker exec -it bipa-btc_testnet-1  bitcoin-cli -rpcuser=dev -rpcpassword=dev -rpcport=18332"
 alias bbreg="bitcoin-cli -rpcuser=dev -rpcpassword=dev -rpcport=18443"
-alias blntest="docker exec -it bipa-lnd-1 lncli --network=testnet --rpcserver lnd:10009 --no-macaroons"
+alias blntest="docker exec -it bipa-lnd-1 lncli --network=testnet --rpcserver lnd:10009 --macaroonpath=/lnd/.lnd/data/chain/bitcoin/testnet/admin.macaroon"
 alias bdb="docker exec -it bipa-database-1 psql postgres://postgres:bipa@localhost/bipa"
 
 # Gh CLI Aliases
@@ -86,7 +86,7 @@ alias ccwa='cargo check --workspace --all-targets'
 alias ccb='cargo check --workspace --all-targets && cargo build --workspace --all-targets'
 alias call='cargo check --workspace --all-targets && \
     cargo build --workspace --all-targets && \
-    ./scripts/test.sh --test-threads=1 && \
+    ./scripts/test.sh && \
     cargo clippy --locked --workspace --all-targets -- -D warnings && \
     ./scripts/check-allows.sh'
 

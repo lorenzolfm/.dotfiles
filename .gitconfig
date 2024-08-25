@@ -8,3 +8,5 @@
 	editor = ~/nvim.appimage
 [commit]
 	gpgsign = true
+[init]
+	defaultBranch = main

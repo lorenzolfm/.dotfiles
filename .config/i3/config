@@ -100,8 +100,7 @@ bindsym $mod+Shift+w layout toggle split
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
-bindsym Print exec gnome-screenshot -i
-bindsym $mod+Print exec gnome-screenshot -a
+bindsym --release $mod+a exec gnome-screenshot -a -c
 
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2

@@ -100,7 +100,7 @@ bindsym $mod+Shift+w layout toggle split
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
-bindsym --release $mod+a exec gnome-screenshot -a -c
+bindsym --release $mod+a exec scrot -s /tmp/screenshot.png && xclip -selection clipboard -t image/png /tmp/screenshot.png && rm /tmp/screenshot.png
 
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2

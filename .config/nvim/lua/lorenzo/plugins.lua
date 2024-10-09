@@ -52,11 +52,11 @@ local plugins = {
     },
     {
         'VonHeikemen/lsp-zero.nvim',
-        branch = 'v3.x'
+        branch = 'v4.x'
     },
     {
         'nvim-telescope/telescope.nvim',
-        version = '0.1.4',
+        version = '0.1.8',
         dependencies = { { 'nvim-lua/plenary.nvim' } },
     },
     {
@@ -83,7 +83,7 @@ local plugins = {
         keys = {
             { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
             { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-            { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+            { "r",     mode = { "o" },           function() require("flash").remote() end,            desc = "Remote Flash" },
             { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
             { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
         },

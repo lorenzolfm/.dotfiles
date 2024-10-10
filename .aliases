@@ -1,5 +1,5 @@
 alias c="clear"
-alias f="nautilus ."
+alias f="nautilus . > /dev/null 2>&1 &"
 alias t="tmux"
 
 # Git aliases
@@ -60,9 +60,6 @@ alias gm="git merge"                 # merge branch
 alias gbdelete="git branch -d"       # delete branch
 alias gbdeleteFORCE="git branch -D"  # delete branch even if not merged
 
-# Config alias for dotfiles bare repo
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
 # Work stuff
 alias bbtest="docker exec -it bipa-btc_testnet-1  bitcoin-cli -rpcuser=dev -rpcpassword=dev -rpcport=18332"
 alias bbreg="bitcoin-cli -rpcuser=dev -rpcpassword=dev -rpcport=18443"
@@ -71,12 +68,13 @@ alias bdb="docker exec -it bipa-database-1 psql postgres://postgres:bipa@localho
 
 # Gh CLI Aliases
 alias openpr='gh pr create --assignee "lorenzolfm" --reviewer "lsunsi,nicolasauler,guissalustiano" --title'
+alias opensitepr='gh pr create --assignee "lorenzolfm" --reviewer "larissajusten,ericviana" --title'
 
 # Diesel migration
 alias dm="diesel migration"
 
 # exa
-alias li='exa --icons'
+alias ls='exa --icons'
 alias lt='exa --tree --level=2 --long --icons --git'
 
 # cargo helpers

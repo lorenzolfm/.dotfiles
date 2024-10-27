@@ -29,6 +29,7 @@ plugins=(
     fzf-tab
     rust
     aliases
+    zsh-vi-mode
 )
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'

@@ -70,7 +70,6 @@ exec --no-startup-id gnome-terminal
 
 exec --no-startup-id google-chrome
 exec --no-startup-id slack
-exec --no-startup-id discord
 exec --no-startup-id telegram-desktop
 exec --no-startup-id spotify
 exec --no-startup-id picom

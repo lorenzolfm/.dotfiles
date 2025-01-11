@@ -1,6 +1,7 @@
 local noice = require('noice')
 local nvim_notify = require('notify')
 
+
 noice.setup({
     bottom_search = true,         -- use a classic bottom cmdline for search
     command_palette = true,       -- position the cmdline and popupmenu together
@@ -10,5 +11,6 @@ noice.setup({
 })
 
 nvim_notify.setup({
-    top_down = false
+    top_down = false,
+    background_colour = "#282828",
 })

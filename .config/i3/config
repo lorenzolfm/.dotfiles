@@ -37,7 +37,7 @@ client.focused_inactive $BLACK $YELLOW $BACKGROUND_COLOR $GREEN
 client.unfocused $BLACK $BLACK $WHITE $BLACK
 client.urgent $BLACK $RED $YELLOW $BLACK
 
-assign [class="Gnome-terminal"] $ws1
+assign [class="ghostty"] $ws1
 assign [class="Google-chrome"] $ws2
 assign [class="Slack"] $ws3
 assign [class="Spotify"] $ws4
@@ -64,9 +64,9 @@ exec --no-startup-id gnome-keyring-daemon --start --components=secrets
 
 # This will open my layout for the workspace Terminal and then open 3 terminals to swallow the layout
 exec --no-startup-id "i3-msg 'workspace Terminal; append_layout ~/.config/i3/workspace-Terminal.json'"
-exec --no-startup-id gnome-terminal
-exec --no-startup-id gnome-terminal
-exec --no-startup-id gnome-terminal
+exec --no-startup-id ghostty
+exec --no-startup-id ghostty
+exec --no-startup-id ghostty
 
 exec --no-startup-id google-chrome
 exec --no-startup-id slack

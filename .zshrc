@@ -1,3 +1,7 @@
+if [[ "$USER" == "lorenzomaturano" ]]; then
+  autoload -Uz compinit && compinit
+fi
+
 source "$HOME/.zshenv"
 
 source <(kubectl completion zsh)

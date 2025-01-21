@@ -34,7 +34,7 @@ local plugins = {
     'hrsh7th/cmp-cmdline',
     'L3MON4D3/LuaSnip',
     'j-hui/fidget.nvim',
-    'axkirillov/telescope-changed-files',
+    'github/copilot.vim',
     {
         'stevearc/oil.nvim',
         config = function()

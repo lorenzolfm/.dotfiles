@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Telegram
+Comment=Telegram Desktop
+Exec=Telegram
+Icon=~/Pictures/icons/telegram.png
+Terminal=false
+Categories=Utility;Application;

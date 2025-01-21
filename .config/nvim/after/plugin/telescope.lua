@@ -18,7 +18,6 @@ vim.keymap.set('n', '<leader>gc', tb.git_commits, {})
 vim.keymap.set('n', '<leader>gx', tb.git_stash, {})
 vim.keymap.set('n', '<leader>gs', tb.git_status, {})
 vim.keymap.set('n', '<leader>gb', tb.git_branches, {})
-vim.keymap.set('n', '<leader>gf', t.load_extension('changed_files').changed_files, {})
 
 -- Grep
 vim.keymap.set('n', '<leader>fw', tb.grep_string, {})

@@ -74,7 +74,7 @@ alias opensitepr='gh pr create --assignee "lorenzolfm" --reviewer "larissajusten
 alias dm="diesel migration"
 
 # exa
-alias ls='exa --icons'
+alias l='exa --icons --git'
 alias lt='exa --tree --level=2 --long --icons --git'
 
 # cargo helpers

@@ -1,5 +1,7 @@
 source "$HOME/.zshenv"
 
+source <(kubectl completion zsh)
+
 HISTSIZE=10000000
 SAVEHIST=$HISTSIZE
 HISTDUP=erase

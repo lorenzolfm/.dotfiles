@@ -34,7 +34,8 @@ local ensure_installed = {
 
 local lsp_servers_with_single_file_support = {
     'bashls',
-    'jsonls',
+    'jq',
+    'protols',
 }
 
 local function setup_lsp_servers(servers)

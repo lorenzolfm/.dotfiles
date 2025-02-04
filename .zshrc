@@ -2,6 +2,8 @@ source "$HOME/.zshenv"
 
 source <(kubectl completion zsh)
 
+eval "$(direnv hook zsh)"
+
 HISTSIZE=10000000
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
@@ -78,5 +80,4 @@ if [ -f '/home/lorenzo/google-cloud-sdk/path.zsh.inc' ]; then . '/home/lorenzo/g
 if [ -f '/home/lorenzo/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/lorenzo/google-cloud-sdk/completion.zsh.inc'; fi
 
 . "$HOME/.atuin/bin/env"
-
 eval "$(atuin init zsh)"

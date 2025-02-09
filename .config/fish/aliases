@@ -25,7 +25,7 @@ alias gcb="git checkout -b"
 alias gbdelete="git branch -d"
 alias gbdeleteFORCE="git branch -D"
 
-# cargo helpers
+# Cargo
 alias crun='cargo run'
 alias cclean='cargo clean'
 alias ccwa='cargo check --workspace --all-targets'
@@ -36,6 +36,10 @@ alias call='cargo check --workspace --all-targets && \
     cargo clippy --locked --workspace --all-targets -- -D warnings && \
     ./scripts/check-allows.sh'
 
+# NixOS
+alias rebuild='sudo nixos-rebuild switch'
+
+# Work
 alias openpr='gh pr create --assignee "lorenzolfm" --reviewer "lsunsi,nicolasauler,guissalustiano,lochetti,WilliamTakeshi,a-moreira" --title'
 
 alias blntest="docker exec -it bipa-lnd-1 lncli --network=testnet --rpcserver lnd:10009 --macaroonpath=/root/.lnd/data/chain/bitcoin/testnet/admin.macaroon"

@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Android Studio
-Type=Application
-Comment=Official integrated development environment (IDE) for Google's Android operating system
-Exec=/home/lorenzo/Applications/android-studio/bin/studio.sh
-Icon=~/Pictures/icons/Android_Studio_Logo_2024.png
-Categories=Utility;Application;

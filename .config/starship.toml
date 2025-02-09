@@ -1,0 +1,31 @@
+palette = 'onedark'
+
+[palettes.onedark]
+black = '#282c34'
+blue = '#61afef'
+yellow = '#e5c07b'
+red = '#e06c75'
+white = '#aab2bf'
+green = '#98c379'
+visual_grey = '#3e4452'
+comment_grey = '#5c6370'
+background_color = '#282828'
+
+[package]
+style = 'bold red'
+
+[character]
+success_symbol = '[➜](bold green)'
+error_symbol = '[➜](bold red)'
+
+[directory]
+style = 'bold green'
+
+[git_branch]
+style = 'bold yellow'
+
+[git_metrics]
+disabled = false
+
+[sudo]
+disabled = false

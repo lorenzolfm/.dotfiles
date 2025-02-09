@@ -6,4 +6,6 @@ fish_vi_key_bindings
 
 source ~/.config/fish/aliases
 
+atuin init fish | source
 starship init fish | source
+zoxide init fish | source

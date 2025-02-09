@@ -3,4 +3,7 @@ if status is-interactive
 end
 
 fish_vi_key_bindings
+
+source ~/.config/fish/aliases
+
 starship init fish | source

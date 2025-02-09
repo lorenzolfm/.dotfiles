@@ -38,6 +38,7 @@ alias call='cargo check --workspace --all-targets && \
 
 # NixOS
 alias rebuild='sudo nixos-rebuild switch'
+alias collect='sudo nixos-collect-garbage -d'
 
 # Work
 alias openpr='gh pr create --assignee "lorenzolfm" --reviewer "lsunsi,nicolasauler,guissalustiano,lochetti,WilliamTakeshi,a-moreira" --title'

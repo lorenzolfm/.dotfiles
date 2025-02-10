@@ -50,3 +50,4 @@ alias dm="diesel migration"
 
 # eza
 alias la='exa -la --header'
+alias ll='exa --icons'

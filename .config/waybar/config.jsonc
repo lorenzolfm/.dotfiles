@@ -61,11 +61,11 @@
 		"tooltip": false
 	},
 	"clock#2": {
-		"format": "{:%H:%M}",
+		"format": "{:%d/%m/%y}",
 		"tooltip": false
 	},
 	"clock#3": {
-		"format": "{:%d/%m/%y}",
+		"format": "{:%H:%M}",
 		"tooltip": false
 	},
 

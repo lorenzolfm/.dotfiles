@@ -263,8 +263,24 @@ load_plugins {
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-theme "gruvbox-dark"
- 
+theme "default"
+
+themes {
+    default {
+        fg 235 219 178
+        bg 80 73 69
+        black 60 56 54
+        red 224 108 117
+        green 152 195 121
+        yellow 229 192 123
+        blue 97 175 239
+        magenta 177 98 134
+        cyan 104 157 106
+        white 170 178 191
+        orange 214 93 14
+    }
+}
+
 // Choose the base input mode of zellij.
 // Default: normal
 // 

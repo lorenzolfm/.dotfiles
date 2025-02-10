@@ -1,7 +1,5 @@
 local lsp_zero = require('lsp-zero')
 local lspconfig = require('lspconfig')
-local mason = require('mason');
-local mason_lspconfig = require('mason-lspconfig');
 local cmp = require('cmp')
 local lspsaga = require('lspsaga')
 
@@ -57,14 +55,6 @@ lspconfig.lua_ls.setup({
 })
 
 setup_lsp_servers(lsp_servers_with_single_file_support)
-
-mason.setup({})
-mason_lspconfig.setup({
-    ensure_installed,
-    handlers = {
-        lsp_zero.default_setup,
-    }
-})
 
 local cmp_format = lsp_zero.cmp_format()
 

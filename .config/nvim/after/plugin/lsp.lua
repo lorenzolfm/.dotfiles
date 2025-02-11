@@ -39,6 +39,7 @@ local servers = {
     bashls = { single_file_support = true },
     jq = { single_file_support = true },
     lua_ls = {},
+    nil_ls = { single_file_support = true },
     protols = { single_file_support = true },
     rust_analyzer = {},
     svelte = {},

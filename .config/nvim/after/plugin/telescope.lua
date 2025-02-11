@@ -1,4 +1,3 @@
-local t = require('telescope')
 local tb = require('telescope.builtin')
 
 -- Finder

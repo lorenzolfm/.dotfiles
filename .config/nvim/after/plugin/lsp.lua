@@ -1,46 +1,50 @@
 local lspconfig = require('lspconfig')
-local lsp_zero = require('lsp-zero')
-local lspsaga = require('lspsaga')
+local keymap = vim.keymap.set
 
-lsp_zero.on_attach(function(_, bufnr)
-    lsp_zero.default_keymaps({ buffer = bufnr })
-    lsp_zero.buffer_autoformat()
-end)
+keymap("n", "gd", function() vim.lsp.buf.definition() end)
+keymap("n", "gh", function() vim.lsp.buf.references() end)
+keymap("n", "[e", function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end)
+keymap("n", "]e", function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR }) end)
+keymap('n', '<F2>', function() vim.lsp.buf.rename() end);
 
-lsp_zero.set_sign_icons({
-    error = '🔺',
-    warn = '🔸',
-    hint = 'ℹ️',
-    info = '🔹',
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = '🔺',
+            [vim.diagnostic.severity.WARN] = '🔸',
+            [vim.diagnostic.severity.HINT] = '▫️',
+            [vim.diagnostic.severity.INFO] = '🔹',
+        }
+    }
 })
 
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if not client then return end
 
-local lsp_servers_with_single_file_support = {
-    'bashls',
-    'jq',
-    'protols',
-    'sqls',
-    'yamlls',
-}
-
-local function setup_lsp_servers(servers)
-    for _, server in ipairs(servers) do
-        lspconfig[server].setup({
-            single_file_support = true,
-        })
-    end
-end
-
-lspconfig.lua_ls.setup {}
-lspconfig.rust_analyzer.setup {}
-lspconfig.svelte.setup {}
-
-setup_lsp_servers(lsp_servers_with_single_file_support)
-
-lspsaga.setup({
-    event = 'LspAttach',
-    request_timeout = 10000,
-    lightbulb = {
-        virtual_text = false,
-    },
+        if client.supports_method('textDocument/formatting') then
+            vim.api.nvim_create_autocmd('BufWritePre', {
+                buffer = args.buf,
+                callback = function()
+                    vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
+                end,
+            })
+        end
+    end,
 })
+
+local servers = {
+    bashls = { single_file_support = true },
+    jq = { single_file_support = true },
+    lua_ls = {},
+    protols = { single_file_support = true },
+    rust_analyzer = {},
+    sqls = { single_file_support = true },
+    svelte = {},
+    yamlls = { single_file_support = true },
+};
+
+for server, config in pairs(servers) do
+    lspconfig[server].setup(config);
+end;

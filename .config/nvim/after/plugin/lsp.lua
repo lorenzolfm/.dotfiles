@@ -3,6 +3,7 @@ local keymap = vim.keymap.set
 
 keymap("n", "gd", function() vim.lsp.buf.definition() end)
 keymap("n", "gh", function() vim.lsp.buf.references() end)
+keymap("n", "<leader>d", function() vim.diagnostic.open_float() end)
 keymap("n", "[e", function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end)
 keymap("n", "]e", function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR }) end)
 keymap('n', '<F2>', function() vim.lsp.buf.rename() end);

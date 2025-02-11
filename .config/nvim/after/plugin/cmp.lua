@@ -1,10 +1,6 @@
---local lsp_zero = require('lsp-zero')
 local cmp = require('cmp')
 
---local cmp_format = lsp_zero.cmp_format()
-
 cmp.setup({
-    --formatting = cmp_format,
     sources = {
         { name = 'nvim_lsp' },
         { name = 'buffer' },

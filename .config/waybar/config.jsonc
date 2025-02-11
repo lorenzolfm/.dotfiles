@@ -4,7 +4,7 @@
     "position": "top",
 
     "modules-left": [
-        "sway/workspaces",
+        "hyprland/workspaces",
         "custom/right-arrow-dark"
     ],
     "modules-center": [
@@ -52,7 +52,7 @@
         "tooltip": false
     },
 
-    "sway/workspaces": {
+    "hyprland/workspaces": {
         "disable-scroll": true,
         "format": "{name}"
     },

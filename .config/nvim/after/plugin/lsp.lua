@@ -40,7 +40,6 @@ local servers = {
     lua_ls = {},
     protols = { single_file_support = true },
     rust_analyzer = {},
-    sqls = { single_file_support = true },
     svelte = {},
     yamlls = { single_file_support = true },
 };

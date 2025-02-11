@@ -22,18 +22,15 @@ local plugins = {
     'scrooloose/nerdcommenter',
     'simrat39/rust-tools.nvim',
     'nvimdev/lspsaga.nvim',
-    'ellisonleao/carbon-now.nvim',
     'kristijanhusak/vim-dadbod-completion',
     {
         'neovim/nvim-lspconfig',
         dependencies = {
             {
                 "folke/lazydev.nvim",
-                ft = "lua", -- only load on lua files
+                ft = "lua",
                 opts = {
                     library = {
-                        -- See the configuration section for more details
-                        -- Load luvit types when the `vim.uv` word is found
                         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
                     },
                 },
@@ -64,10 +61,6 @@ local plugins = {
         build = ':TSUpdate'
     },
     {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v4.x'
-    },
-    {
         'nvim-telescope/telescope.nvim',
         version = '0.1.8',
         dependencies = { { 'nvim-lua/plenary.nvim' } },
@@ -92,7 +85,6 @@ local plugins = {
         event = "VeryLazy",
         ---@type Flash.Config
         opts = {},
-        -- stylua: ignore
         keys = {
             { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
             { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },

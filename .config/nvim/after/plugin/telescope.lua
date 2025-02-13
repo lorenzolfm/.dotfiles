@@ -28,6 +28,7 @@ vim.keymap.set('n', '<leader>th', tb.command_history, {})
 
 -- Lsp
 vim.keymap.set('n', '<leader>lr', tb.lsp_references, {})
-vim.keymap.set('n', '<leader>ld', tb.diagnostics, {})
+vim.keymap.set('n', '<leader>le', function() tb.diagnostics({ severity = vim.diagnostic.severity.ERROR }) end,
+    { desc = 'Find error diagnostics' })
 
 vim.keymap.set('n', '<leader>tr', tb.resume, {})

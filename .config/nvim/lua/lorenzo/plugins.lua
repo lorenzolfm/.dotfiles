@@ -31,7 +31,10 @@ local plugins = {
     'kristijanhusak/vim-dadbod-completion',
     {
         'saghen/blink.cmp',
-        dependencies = 'rafamadriz/friendly-snippets',
+        dependencies = {
+            'rafamadriz/friendly-snippets',
+            'fang2hou/blink-copilot',
+        },
         version = '*',
         ---@module 'blink.cmp'
         ---@type blink.cmp.Config
@@ -42,10 +45,22 @@ local plugins = {
                 nerd_font_variant = 'mono'
             },
 
+            completion = {
+                menu = {
+                    draw = {
+                        columns = {
+                            { "label",     "label_description", gap = 1 },
+                            { "kind_icon", "kind" }
+                        }
+                    }
+                },
+            },
+
             sources = {
-                default = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod' },
+                default = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod', 'copilot' },
                 providers = {
-                    dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' }
+                    dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' },
+                    copilot = { name = 'Copilot', module = 'blink-copilot', async = true },
                 }
             },
         },

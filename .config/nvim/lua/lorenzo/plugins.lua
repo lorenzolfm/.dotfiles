@@ -2,6 +2,7 @@
 -- []: sql lsp capabilities
 -- []: make telescope grepable on the dotfiles dir
 -- []: make telescope open already opened buffer window instead of opening a new window
+-- []: play around with snippets
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

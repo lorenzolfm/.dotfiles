@@ -35,15 +35,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
+local capabilities = require('blink.cmp').get_lsp_capabilities()
+
 local servers = {
-    bashls = { single_file_support = true },
-    jq = { single_file_support = true },
-    lua_ls = {},
-    nil_ls = { single_file_support = true },
-    protols = { single_file_support = true },
-    rust_analyzer = {},
-    svelte = {},
-    yamlls = { single_file_support = true },
+    bashls = { single_file_support = true, capabilities = capabilities },
+    jq = { single_file_support = true, capabilities = capabilities },
+    lua_ls = { capabilities = capabilities },
+    nil_ls = { single_file_support = true, capabilities = capabilities },
+    protols = { single_file_support = true, capabilities = capabilities },
+    rust_analyzer = { capabilities = capabilities },
+    svelte = { single_file_support = true, capabilities = capabilities },
+    yamlls = { single_file_support = true, capabilities = capabilities },
 };
 
 for server, config in pairs(servers) do

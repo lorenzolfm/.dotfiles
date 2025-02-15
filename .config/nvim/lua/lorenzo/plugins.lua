@@ -1,3 +1,8 @@
+-- TODO
+-- []: sql lsp capabilities
+-- []: make telescope grepable on the dotfiles dir
+-- []: make telescope open already opened buffer window instead of opening a new window
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -24,6 +29,28 @@ local plugins = {
     'nvimdev/lspsaga.nvim',
     'kristijanhusak/vim-dadbod-completion',
     {
+        'saghen/blink.cmp',
+        dependencies = 'rafamadriz/friendly-snippets',
+        version = '*',
+        ---@module 'blink.cmp'
+        ---@type blink.cmp.Config
+        opts = {
+            keymap = { preset = 'default' },
+            appearance = {
+                use_nvim_cmp_as_default = true,
+                nerd_font_variant = 'mono'
+            },
+
+            sources = {
+                default = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod' },
+                providers = {
+                    dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' }
+                }
+            },
+        },
+        opts_extend = { "sources.default" }
+    },
+    {
         'neovim/nvim-lspconfig',
         dependencies = {
             {
@@ -37,12 +64,6 @@ local plugins = {
             }
         }
     },
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/nvim-cmp',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
-    'hrsh7th/cmp-cmdline',
-    'L3MON4D3/LuaSnip',
     'j-hui/fidget.nvim',
     'github/copilot.vim',
     {
@@ -62,7 +83,7 @@ local plugins = {
     },
     {
         'nvim-telescope/telescope.nvim',
-        version = '0.1.8',
+        -- version = '0.1.8',
         dependencies = { { 'nvim-lua/plenary.nvim' } },
     },
     {

@@ -10,7 +10,7 @@ return {
                 code_action = '🔹',
             },
             lightbulb = {
-                virtual_text = true,
+                virtual_text = false,
             },
         })
 

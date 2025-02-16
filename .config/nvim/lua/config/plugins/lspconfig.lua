@@ -53,11 +53,9 @@ return {
 
         local servers = {
             bashls = { single_file_support = true, capabilities = capabilities },
-            -- jq = { single_file_support = true, capabilities = capabilities },
             lua_ls = { capabilities = capabilities },
             nil_ls = { single_file_support = true, capabilities = capabilities },
             protols = { single_file_support = true, capabilities = capabilities },
-            rust_analyzer = { capabilities = capabilities },
             svelte = { single_file_support = true, capabilities = capabilities },
             yamlls = { single_file_support = true, capabilities = capabilities },
         };

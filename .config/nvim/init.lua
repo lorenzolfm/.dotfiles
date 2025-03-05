@@ -9,3 +9,7 @@ for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) d
         return default_diagnostic_handler(err, result, context, config)
     end
 end
+
+vim.cmd [[
+  highlight Normal guibg=none
+]]

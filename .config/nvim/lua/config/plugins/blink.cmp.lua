@@ -2,7 +2,6 @@ return {
     "saghen/blink.cmp",
     dependencies = {
         "rafamadriz/friendly-snippets",
-        "fang2hou/blink-copilot",
         "kristijanhusak/vim-dadbod-completion",
     },
     version = "*",
@@ -49,10 +48,9 @@ return {
         },
 
         sources = {
-            default = { "lsp", "path", "snippets", "buffer", "dadbod", "copilot" },
+            default = { "lsp", "path", "snippets", "buffer", "dadbod" },
             providers = {
                 dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
-                copilot = { name = "Copilot", module = "blink-copilot", async = true },
             }
         },
     },

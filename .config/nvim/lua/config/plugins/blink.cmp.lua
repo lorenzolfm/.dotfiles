@@ -8,6 +8,11 @@ return {
     ---@module "blink.cmp"
     ---@type blink.cmp.Config
     opts = {
+        cmdline = {
+            keymap = { preset = 'inherit' },
+            completion = { menu = { auto_show = true } },
+        },
+
         keymap = {
             preset = "default",
             ["<C-1>"] = { function(cmp) cmp.accept({ index = 1 }) end },

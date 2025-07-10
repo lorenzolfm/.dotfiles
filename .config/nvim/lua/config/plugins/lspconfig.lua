@@ -53,6 +53,7 @@ return {
 
         local servers = {
             bashls = { single_file_support = true, capabilities = capabilities },
+            html = { single_file_support = true, capabilities = capabilities },
             lua_ls = { capabilities = capabilities },
             nil_ls = { single_file_support = true, capabilities = capabilities },
             protols = { single_file_support = true, capabilities = capabilities },

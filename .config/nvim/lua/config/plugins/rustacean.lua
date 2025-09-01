@@ -7,9 +7,7 @@ return {
             server = {
                 default_settings = {
                     ['rust-analyzer'] = {
-                        checkOnSave = {
-                            command = "check",
-                        },
+                        checkOnSave = false
                     },
                 },
             },

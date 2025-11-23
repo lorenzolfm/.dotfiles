@@ -41,7 +41,7 @@ alias rebuild='sudo nixos-rebuild switch'
 alias collect='sudo nix-collect-garbage -d'
 
 # Work
-alias openpr='gh pr create --assignee "lorenzolfm" --reviewer "lsunsi,nicolasauler,guissalustiano,lochetti,WilliamTakeshi,a-moreira" --title'
+alias openpr='gh pr create --assignee "lorenzolfm" --title'
 
 alias blntest="docker exec -it bipa-lnd-1 lncli --network=testnet --rpcserver lnd:10009 --macaroonpath=/root/.lnd/data/chain/bitcoin/testnet/admin.macaroon"
 alias bdb="docker exec -it bipa-database-1 psql postgres://postgres:bipa@localhost/bipa"

@@ -3,3 +3,4 @@ background = 282828
 background-opacity = 0.8
 copy-on-select = clipboard
 right-click-action = paste
+keybind = shift+enter=text:\x1b\r

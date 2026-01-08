@@ -1,0 +1,6 @@
+{
+  "env": {
+    "DISABLE_TELEMETRY": "1"
+  },
+  "model": "opus",
+}

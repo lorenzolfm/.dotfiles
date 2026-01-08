@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+SESSION="${ZELLIJ_SESSION_NAME:-unknown}"
+TAB=$(zellij action query-tab-names 2>/dev/null | head -1 || echo "?")
+
+# Run notification with action in background so hook doesn't block
+(
+  ACTION=$(notify-send "Claude Code [$SESSION/$TAB]" "Needs your attention" \
+    --action="focus=Focus")
+
+  if [ "$ACTION" = "focus" ]; then
+    hyprctl dispatch focuswindow "class:com.mitchellh.ghostty"
+    zellij attach "$SESSION" -f
+  fi
+) &

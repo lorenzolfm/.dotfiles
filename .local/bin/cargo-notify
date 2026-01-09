@@ -4,6 +4,7 @@
 EXIT_CODE="$1"
 CMD_NAME="$2"
 SESSION="${ZELLIJ_SESSION_NAME:-unknown}"
+ICON="$HOME/.local/share/icons/notifications/rust.svg"
 
 if [ "$EXIT_CODE" -eq 0 ]; then
     TITLE="Cargo $CMD_NAME completed"
@@ -13,5 +14,5 @@ else
     SOUND="/run/current-system/sw/share/sounds/freedesktop/stereo/dialog-warning.oga"
 fi
 
-notify-send "$TITLE" "Session: $SESSION" &
+notify-send -i "$ICON" "$TITLE" "Session: $SESSION" &
 pw-play "$SOUND" &

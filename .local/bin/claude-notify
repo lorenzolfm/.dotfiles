@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 SESSION="${ZELLIJ_SESSION_NAME:-unknown}"
+ICON="$HOME/.local/share/icons/notifications/claude.png"
 
-EMOJIS=("🤖" "💻" "🔧" "⚡" "🚀" "✨" "🎯" "🧠" "💡" "🔍")
-EMOJI="${EMOJIS[$RANDOM % ${#EMOJIS[@]}]}"
-
-notify-send "$EMOJI Claude Code - $SESSION" " Needs your attention" &
+notify-send -i "$ICON" "Claude Code - $SESSION" "Needs your attention" &

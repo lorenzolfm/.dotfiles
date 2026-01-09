@@ -31,28 +31,32 @@ function crun
     ~/.local/bin/cargo-notify $status "run"
 end
 
-function cclean
-    cargo clean $argv
-    ~/.local/bin/cargo-notify $status "clean"
-end
-
-function ccwa
-    cargo check --workspace --all-targets $argv
+function ccheck
+    cargo check $argv
     ~/.local/bin/cargo-notify $status "check"
 end
 
-function ccb
-    cargo check --workspace --all-targets && cargo build --workspace --all-targets $argv
-    ~/.local/bin/cargo-notify $status "check+build"
+function ccheckall
+    cargo check --workspace --all-targets $argv
+    ~/.local/bin/cargo-notify $status "check-all"
 end
 
-function call
-    cargo check --workspace --all-targets && \
-        cargo build --workspace --all-targets && \
-        ./scripts/test.sh && \
-        cargo clippy --locked --workspace --all-targets -- -D warnings && \
-        ./scripts/check-allows.sh
-    ~/.local/bin/cargo-notify $status "all"
+function cbuild
+    cargo build $argv
+    ~/.local/bin/cargo-notify $status "build"
+end
+
+function ctest
+    cargo test $argv
+    ~/.local/bin/cargo-notify $status "test"
+end
+
+function cibipa
+    cargo fmt && \
+        ./scripts/check-allows.sh && \
+        ./scripts/clippy.sh && \
+        ./scripts/test.sh
+    ~/.local/bin/cargo-notify $status "ci"
 end
 
 # NixOS

@@ -2,4 +2,4 @@
 SESSION="${ZELLIJ_SESSION_NAME:-unknown}"
 ICON="$HOME/.local/share/icons/notifications/claude.png"
 
-notify-send -i "$ICON" "Claude - $SESSION" "Needs your attention" &
+notify-send -a "Claude" -i "$ICON" "Claude - $SESSION" "Needs your attention" &

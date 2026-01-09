@@ -14,5 +14,5 @@ else
     SOUND="/run/current-system/sw/share/sounds/freedesktop/stereo/dialog-warning.oga"
 fi
 
-notify-send -i "$ICON" "$TITLE" "Session: $SESSION" &
+notify-send -a "Cargo" -i "$ICON" "$TITLE" "Session: $SESSION" &
 pw-play "$SOUND" &

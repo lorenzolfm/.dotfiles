@@ -27,8 +27,12 @@ alias gbdeleteFORCE="git branch -D"
 
 # Cargo
 function crun
-    cargo run $argv
-    ~/.local/bin/cargo-notify $status "run"
+    cargo build $argv
+    and begin
+        ~/.local/bin/cargo-notify 0 "run"
+        cargo run $argv
+    end
+    or ~/.local/bin/cargo-notify $status "run"
 end
 
 function ccheck

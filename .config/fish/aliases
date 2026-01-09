@@ -26,15 +26,34 @@ alias gbdelete="git branch -d"
 alias gbdeleteFORCE="git branch -D"
 
 # Cargo
-alias crun='cargo run'
-alias cclean='cargo clean'
-alias ccwa='cargo check --workspace --all-targets'
-alias ccb='cargo check --workspace --all-targets && cargo build --workspace --all-targets'
-alias call='cargo check --workspace --all-targets && \
-    cargo build --workspace --all-targets && \
-    ./scripts/test.sh && \
-    cargo clippy --locked --workspace --all-targets -- -D warnings && \
-    ./scripts/check-allows.sh'
+function crun
+    cargo run $argv
+    ~/.local/bin/cargo-notify $status "run"
+end
+
+function cclean
+    cargo clean $argv
+    ~/.local/bin/cargo-notify $status "clean"
+end
+
+function ccwa
+    cargo check --workspace --all-targets $argv
+    ~/.local/bin/cargo-notify $status "check"
+end
+
+function ccb
+    cargo check --workspace --all-targets && cargo build --workspace --all-targets $argv
+    ~/.local/bin/cargo-notify $status "check+build"
+end
+
+function call
+    cargo check --workspace --all-targets && \
+        cargo build --workspace --all-targets && \
+        ./scripts/test.sh && \
+        cargo clippy --locked --workspace --all-targets -- -D warnings && \
+        ./scripts/check-allows.sh
+    ~/.local/bin/cargo-notify $status "all"
+end
 
 # NixOS
 alias rebuild='sudo nixos-rebuild switch'

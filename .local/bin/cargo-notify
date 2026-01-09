@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Usage: cargo-notify <exit_code> <command_name>
+
+EXIT_CODE="$1"
+CMD_NAME="$2"
+SESSION="${ZELLIJ_SESSION_NAME:-unknown}"
+
+if [ "$EXIT_CODE" -eq 0 ]; then
+    TITLE="Cargo $CMD_NAME completed"
+    SOUND="/run/current-system/sw/share/sounds/freedesktop/stereo/complete.oga"
+else
+    TITLE="Cargo $CMD_NAME failed"
+    SOUND="/run/current-system/sw/share/sounds/freedesktop/stereo/dialog-warning.oga"
+fi
+
+notify-send "$TITLE" "Session: $SESSION" &
+pw-play "$SOUND" &

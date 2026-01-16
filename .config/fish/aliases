@@ -25,6 +25,9 @@ alias gcb="git checkout -b"
 alias gbdelete="git branch -d"
 alias gbdeleteFORCE="git branch -D"
 
+alias gwa="git worktree add"
+alias gwr="git worktree remove"
+
 # Cargo
 function crun
     cargo build $argv
@@ -74,6 +77,12 @@ alias blntest="docker exec -it bipa-lnd-1 lncli --network=testnet --rpcserver ln
 alias bdb="docker exec -it bipa-database-1 psql postgres://postgres:bipa@localhost/bipa"
 alias bbtest="docker exec -it bipa-btc_testnet-1  bitcoin-cli -rpcuser=dev -rpcpassword=dev -rpcport=18332"
 alias dm="diesel migration"
+
+function bwt
+    git worktree add $argv[1]
+    and ~/Projects/Work/bipa.git/setup-worktree.sh $argv[1]
+    and cd $argv[1]
+end
 
 # eza
 alias la='exa -la --header'

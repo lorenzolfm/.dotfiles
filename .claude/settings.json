@@ -2,7 +2,7 @@
   "env": {
     "DISABLE_TELEMETRY": "1"
   },
-  "model": "opus",
+  "includeCoAuthoredBy": false,
   "hooks": {
     "Stop": [
       {
@@ -28,6 +28,5 @@
   "enabledPlugins": {
     "rust-analyzer-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true
-  },
-  "includeCoAuthoredBy": false
+  }
 }

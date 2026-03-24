@@ -3,6 +3,7 @@ SESSION="${ZELLIJ_SESSION_NAME:-unknown}"
 
 if [[ "$(uname)" == "Darwin" ]]; then
   terminal-notifier -title "Claude - $SESSION" -message "Needs your attention" -activate com.mitchellh.ghostty &
+  afplay /System/Library/Sounds/Glass.aiff &
 else
   ICON="$HOME/.local/share/icons/notifications/claude.png"
   notify-send -a "Claude" -i "$ICON" "Claude - $SESSION" "Needs your attention" &

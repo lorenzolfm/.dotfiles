@@ -85,5 +85,5 @@ function bwt
 end
 
 # eza
-alias la='exa -la --header'
-alias ll='exa --icons'
+alias la='eza -la --header'
+alias ll='eza --icons'

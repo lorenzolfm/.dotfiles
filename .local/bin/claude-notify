@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 SESSION="${ZELLIJ_SESSION_NAME:-unknown}"
-ICON="$HOME/.local/share/icons/notifications/claude.png"
 
-notify-send -a "Claude" -i "$ICON" "Claude - $SESSION" "Needs your attention" &
+if [[ "$(uname)" == "Darwin" ]]; then
+  terminal-notifier -title "Claude - $SESSION" -message "Needs your attention" -activate com.mitchellh.ghostty &
+else
+  ICON="$HOME/.local/share/icons/notifications/claude.png"
+  notify-send -a "Claude" -i "$ICON" "Claude - $SESSION" "Needs your attention" &
+fi

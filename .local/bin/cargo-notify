@@ -4,15 +4,30 @@
 EXIT_CODE="$1"
 CMD_NAME="$2"
 SESSION="${ZELLIJ_SESSION_NAME:-unknown}"
-ICON="$HOME/.local/share/icons/notifications/rust.svg"
 
 if [ "$EXIT_CODE" -eq 0 ]; then
     TITLE="Cargo $CMD_NAME completed"
-    SOUND="/run/current-system/sw/share/sounds/freedesktop/stereo/complete.oga"
 else
     TITLE="Cargo $CMD_NAME failed"
-    SOUND="/run/current-system/sw/share/sounds/freedesktop/stereo/dialog-warning.oga"
 fi
 
-notify-send -a "Cargo" -i "$ICON" "$TITLE" "Session: $SESSION" &
-pw-play "$SOUND" &
+case "$(uname)" in
+    Darwin)
+        terminal-notifier -title "$TITLE" -message "Session: $SESSION" -activate com.mitchellh.ghostty &
+        if [ "$EXIT_CODE" -eq 0 ]; then
+            afplay /System/Library/Sounds/Glass.aiff &
+        else
+            afplay /System/Library/Sounds/Basso.aiff &
+        fi
+        ;;
+    Linux)
+        ICON="$HOME/.local/share/icons/notifications/rust.svg"
+        if [ "$EXIT_CODE" -eq 0 ]; then
+            SOUND="/run/current-system/sw/share/sounds/freedesktop/stereo/complete.oga"
+        else
+            SOUND="/run/current-system/sw/share/sounds/freedesktop/stereo/dialog-warning.oga"
+        fi
+        notify-send -a "Cargo" -i "$ICON" "$TITLE" "Session: $SESSION" &
+        pw-play "$SOUND" &
+        ;;
+esac

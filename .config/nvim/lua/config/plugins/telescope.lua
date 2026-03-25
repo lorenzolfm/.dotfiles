@@ -4,11 +4,7 @@ return {
     config = function()
         local tb = require('telescope.builtin')
 
-        -- Finder
-        vim.keymap.set('n', '<leader>ff',
-            function() tb.git_files({ find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' } }) end, {})
-        vim.keymap.set('n', '<leader>fa',
-            function() tb.find_files({ find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' } }) end, {})
+        -- Finder (file/grep moved to fff.nvim)
         vim.keymap.set('n', '<leader>fb', tb.buffers, {})
         vim.keymap.set('n', '<leader>fh', tb.help_tags, {})
         vim.keymap.set('n', '<leader>fo', tb.oldfiles, {})
@@ -21,10 +17,6 @@ return {
         vim.keymap.set('n', '<leader>gx', tb.git_stash, {})
         vim.keymap.set('n', '<leader>gs', tb.git_status, {})
         vim.keymap.set('n', '<leader>gb', tb.git_branches, {})
-
-        -- Grep
-        vim.keymap.set('n', '<leader>fw', tb.grep_string, {})
-        vim.keymap.set('n', '<leader>fg', tb.live_grep, {})
 
         -- Commands
         vim.keymap.set('n', '<leader>tc', tb.commands, {})

@@ -19,13 +19,27 @@ vim.opt.splitright = true
 vim.api.nvim_command("set invlist")
 vim.opt.list = true
 vim.api.nvim_command([[set listchars=eol:¬,trail:⋅,extends:❯,precedes:❮,tab:¦\]])
-vim.g.clipboard = {
-    name = "OSC 52",
-    copy = {
-        ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-        ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-    },
-}
+if vim.env.SSH_TTY then
+    local osc52_cache = { ["+"] = {}, ["*"] = {} }
+    local osc52 = require("vim.ui.clipboard.osc52")
+    vim.g.clipboard = {
+        name = "OSC 52",
+        copy = {
+            ["+"] = function(lines, regtype)
+                osc52_cache["+"] = { lines, regtype }
+                osc52.copy("+")(lines, regtype)
+            end,
+            ["*"] = function(lines, regtype)
+                osc52_cache["*"] = { lines, regtype }
+                osc52.copy("*")(lines, regtype)
+            end,
+        },
+        paste = {
+            ["+"] = function() return osc52_cache["+"] end,
+            ["*"] = function() return osc52_cache["*"] end,
+        },
+    }
+end
 vim.opt.clipboard = "unnamedplus"
 vim.opt.inccommand = "split"
 vim.opt.encoding = "utf-8"

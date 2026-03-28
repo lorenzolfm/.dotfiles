@@ -26,8 +26,12 @@ vim.g.clipboard = {
         ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
     },
     paste = {
-        ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
-        ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+        ["+"] = (vim.env.SSH_TTY and require("vim.ui.clipboard.osc52").paste("+"))
+            or (vim.fn.has("mac") == 1 and function() return vim.fn.systemlist("pbpaste") end)
+            or function() return vim.fn.systemlist("wl-paste --no-newline") end,
+        ["*"] = (vim.env.SSH_TTY and require("vim.ui.clipboard.osc52").paste("*"))
+            or (vim.fn.has("mac") == 1 and function() return vim.fn.systemlist("pbpaste") end)
+            or function() return vim.fn.systemlist("wl-paste --no-newline --primary") end,
     },
 }
 vim.opt.clipboard = "unnamedplus"

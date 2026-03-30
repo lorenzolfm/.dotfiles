@@ -1,7 +1,4 @@
 {
-  "env": {
-    "DISABLE_TELEMETRY": "1"
-  },
   "includeCoAuthoredBy": false,
   "hooks": {
     "Stop": [

@@ -4,7 +4,11 @@ return {
         local fidget = require("fidget");
 
         fidget.setup({
-            spinner = "dots"
+            progress = {
+                display = {
+                    progress_icon = "dots"
+                }
+            }
         })
     end
 }

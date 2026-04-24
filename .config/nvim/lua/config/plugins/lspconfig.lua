@@ -12,7 +12,6 @@ return {
         }
     },
     config = function()
-        local lspconfig = require("lspconfig")
         local keymap = vim.keymap.set
 
         keymap("n", "gd", function() vim.lsp.buf.definition() end)
@@ -66,7 +65,8 @@ return {
         };
 
         for server, config in pairs(servers) do
-            lspconfig[server].setup(config);
-        end;
+            vim.lsp.config(server, config)
+            vim.lsp.enable(server)
+        end
     end
 }

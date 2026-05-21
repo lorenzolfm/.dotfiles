@@ -7,7 +7,10 @@ return {
             server = {
                 default_settings = {
                     ['rust-analyzer'] = {
-                        checkOnSave = false
+                        checkOnSave = false,
+                        cargo = {
+                            targetDir = true,
+                        },
                     },
                 },
             },

@@ -34,5 +34,8 @@
   "remoteControlAtStartup": true,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true
+  "voiceEnabled": false,
+  "voice": {
+    "enabled": false
+  }
 }

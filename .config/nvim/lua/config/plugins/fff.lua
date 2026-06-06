@@ -4,6 +4,12 @@ return {
         require("fff.download").download_or_build_binary()
     end,
     lazy = false,
+    opts = {
+        keymaps = {
+            select_split = "<C-x>",
+            select_vsplit = "<C-v>",
+        },
+    },
     keys = {
         { "<leader>ff", function() require("fff").find_files() end, desc = "Find files (fff)" },
         { "<leader>fa", function() require("fff").find_files() end, desc = "Find all files (fff)" },

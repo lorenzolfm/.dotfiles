@@ -26,7 +26,15 @@ alias gbdelete="git branch -d"
 alias gbdeleteFORCE="git branch -D"
 
 alias gwa="git worktree add"
-alias gwr="git worktree remove"
+
+function gwr
+    set -l branch (git -C $argv[1] branch --show-current)
+    git worktree remove $argv
+    and begin
+        test -n "$branch"
+        and git branch -d $branch
+    end
+end
 
 # Cargo
 function crun

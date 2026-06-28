@@ -1,5 +1,9 @@
 palette = 'onedark'
 
+# Default module order, but with kubernetes moved to the end of the info line
+# (after everything else, before the line break and prompt character).
+format = '$all$kubernetes$line_break$character'
+
 [palettes.onedark]
 black = '#282c34'
 blue = '#61afef'
@@ -29,3 +33,24 @@ disabled = false
 
 [sudo]
 disabled = false
+
+[kubernetes]
+disabled = false
+format = '[$symbol$context]($style) '
+symbol = '⎈ '
+style = 'bold blue'
+
+[[kubernetes.contexts]]
+context_pattern = 'gke_bipa-278720_us-central1_bipa'
+context_alias = '🚨 bipa-prod'
+style = 'bold red'
+
+[[kubernetes.contexts]]
+context_pattern = 'gke_bipa-278720_us-central1_(?P<rest>.*)'
+context_alias = '🧪 bipa-$rest'
+style = 'bold yellow'
+
+[[kubernetes.contexts]]
+context_pattern = 'kubernetes-admin@kubernetes'
+context_alias = '🏠 homelab'
+style = 'bold green'

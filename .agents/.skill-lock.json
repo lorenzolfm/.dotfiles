@@ -46,6 +46,15 @@
       "skillFolderHash": "d9c8935dd560b3b6f5941247d04a1843f8c7cc35",
       "installedAt": "2026-07-02T09:41:20.939Z",
       "updatedAt": "2026-07-02T10:27:49.316Z"
+    },
+    "thermo-nuclear-review": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "thermos/skills/thermo-nuclear-review/SKILL.md",
+      "skillFolderHash": "b222e50771b6bc6f7d2b926b86da2342f160bb79",
+      "installedAt": "2026-07-02T10:28:34.193Z",
+      "updatedAt": "2026-07-02T10:28:34.193Z"
     }
   },
   "dismissed": {

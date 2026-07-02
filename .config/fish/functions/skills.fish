@@ -1,11 +1,11 @@
-function skills --description 'npx skills, staging changes in dotfiles for review'
+function skills --description 'npx skills, showing dotfiles changes for manual handling'
     npx skills $argv
     set -l rc $status
     if contains -- "$argv[1]" add remove update
-        git -C ~/.dotfiles add .agents .claude/skills
-        if not git -C ~/.dotfiles diff --cached --quiet
-            echo "skills: staged the following in ~/.dotfiles (review, then commit):"
-            git -C ~/.dotfiles status --short .agents .claude/skills
+        set -l changes (git -C ~/.dotfiles status --short .agents .claude/skills)
+        if test -n "$changes"
+            echo "skills: changes in ~/.dotfiles (stage & commit yourself):"
+            printf '%s\n' $changes
         end
     end
     return $rc

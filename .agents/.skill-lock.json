@@ -15,19 +15,18 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/vercel-labs/skills.git",
       "skillPath": "skills/find-skills/SKILL.md",
-      "skillFolderHash": "c2f31172b6f256272305a5e6e7228b258446899f",
+      "skillFolderHash": "eb6a23305aea6e340d14b9de3766e721f9f4861b",
       "installedAt": "2026-03-11T09:25:41.780Z",
-      "updatedAt": "2026-03-11T09:25:41.780Z"
+      "updatedAt": "2026-07-09T09:00:10.573Z"
     },
     "handoff": {
       "source": "mattpocock/skills",
       "sourceType": "github",
       "sourceUrl": "https://github.com/mattpocock/skills.git",
       "skillPath": "skills/productivity/handoff/SKILL.md",
-      "skillFolderHash": "aa82ffd61d7a3bda110060b4e24ec782b983cb8d",
-      "pluginName": "mattpocock-skills",
+      "skillFolderHash": "3f7df8e717e41dfd6eacd03d47319a2e01248ffb",
       "installedAt": "2026-05-25T09:18:38.346Z",
-      "updatedAt": "2026-07-02T10:32:16.664Z"
+      "updatedAt": "2026-07-09T09:00:13.619Z"
     },
     "create-skill": {
       "source": "siviter-xyz/dot-agent",

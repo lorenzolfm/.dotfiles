@@ -1,7 +1,16 @@
 {
+  "attribution": {
+    "sessionUrl": false
+  },
   "includeCoAuthoredBy": false,
   "permissions": {
     "defaultMode": "auto"
+  },
+  "model": "opus[1m]",
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh",
+    "padding": 0
   },
   "hooks": {
     "Stop": [
@@ -29,6 +38,7 @@
     "typescript-lsp@claude-plugins-official": true,
     "lua-lsp@claude-plugins-official": true
   },
+  "effortLevel": "xhigh",
   "voice": {
     "enabled": false
   },

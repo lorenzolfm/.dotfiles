@@ -14,6 +14,13 @@ atuin init fish | source
 starship init fish | source
 zoxide init fish | source
 
+# Guarded, unlike the lines above: wt is installed by the NixOS config, so it
+# is absent until the next `nixos-rebuild switch` and on any host that does
+# not install it.
+if command -q wt
+    wt shell-init fish | source
+end
+
 # Bind kubectl to a cluster based on directory, so the wrong cluster can't be
 # inherited between terminals. Unknown dirs unset KUBECONFIG → no silent default.
 function __kube_autoselect --on-variable PWD

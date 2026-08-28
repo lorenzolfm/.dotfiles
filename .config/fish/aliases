@@ -86,11 +86,12 @@ alias bdb="docker exec -it bipa-database-1 psql postgres://postgres:bipa@localho
 alias bbtest="docker exec -it bipa-btc_testnet-1  bitcoin-cli -rpcuser=dev -rpcpassword=dev -rpcport=18332"
 alias dm="diesel migration"
 
-function bwt
-    git worktree add $argv[1]
-    and ~/Projects/Work/bipa.git/setup-worktree.sh $argv[1]
-    and cd $argv[1]
+function bwt --wraps wt --description 'bipa worktree: make a worktree in the bipa repo'
+    wt --repo ~/Projects/Work/bipa.git add $argv
 end
+
+complete -c bwt -f -n '__fish_is_first_arg' \
+    -a "(wt --repo ~/Projects/Work/bipa.git __branches 2>/dev/null)"
 
 # eza
 alias la='eza -la --header'

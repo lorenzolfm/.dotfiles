@@ -1,0 +1,22 @@
+[repos."github.com/bipa-app/bipa"]
+link = [
+    ".auth",
+    ".env.override",
+    ".envrc",
+    ".volumes/lightning/data",
+]
+
+[repos."github.com/bipa-app/infra"]
+link = ["terraform/terraform.tfvars"]
+
+[repos."github.com/lorenzolfm/Floresta"]
+link = []
+
+[repos."github.com/lorenzolfm/despesas"]
+link = [
+    ".claude/settings.local.json",
+    ".env",
+    ".sync",
+    "frontend/.env",
+    "frontend/fixtures",
+]

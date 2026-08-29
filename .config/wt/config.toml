@@ -7,7 +7,10 @@ link = [
 ]
 
 [repos."github.com/bipa-app/infra"]
-link = ["terraform/terraform.tfvars"]
+link = [
+    "terraform/.terraform",
+    "terraform/terraform.tfvars",
+]
 
 [repos."github.com/lorenzolfm/Floresta"]
 link = []
@@ -20,3 +23,6 @@ link = [
     "frontend/.env",
     "frontend/fixtures",
 ]
+
+[repos."github.com/lorenzolfm/zj-picker"]
+link = []

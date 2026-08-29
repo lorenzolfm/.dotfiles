@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=IBus
+# Overrides the ibus-daemon.desktop that GNOME's ibus drags into the system
+# path. Its NotShowIn=GNOME;KDE lets it run under Hyprland, where UWSM now
+# activates xdg-desktop-autostart.target -- and IBus then notifies on every
+# login that it was not started by a Wayland session's input method. No input
+# method is in use here; the keyboard layout comes from hyprland.lua.
+Hidden=true

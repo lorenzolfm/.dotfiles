@@ -87,3 +87,11 @@ window#waybar {
 #custom-notification {
     font-family: "FiraCode Nerd Font";
 }
+
+/* claude-tray sets SNI status NeedsAttention when a session is waiting on you,
+ * and waybar turns that into a `needs-attention` class. The drawn pixmap is
+ * monochrome on purpose, so the cue has to be a box property: `color` does not
+ * tint an image. */
+#tray .needs-attention {
+	border-bottom: 2px solid #e5c07b;
+}

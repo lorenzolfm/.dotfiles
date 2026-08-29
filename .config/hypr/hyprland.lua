@@ -56,6 +56,11 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("wl-paste --watch cliphist store")
     hl.exec_cmd("wbg ~/Pictures/wallpapers/great-wave-of-kanagawa-gruvbox.png")
     hl.exec_cmd("blueman-applet")
+    -- AirPods battery/ANC control. Tray app; --hide keeps its window closed.
+    -- Its tray icon is registered once at startup with no retry, so it has to
+    -- lose to waybar, which owns StatusNotifierWatcher. Wait for that name --
+    -- `;` not `&&`, so a missing or timed-out gdbus still starts librepods.
+    hl.exec_cmd("gdbus wait --session --timeout 30 org.kde.StatusNotifierWatcher; librepods --hide")
     hl.exec_cmd("vicinae server")
 end)
 

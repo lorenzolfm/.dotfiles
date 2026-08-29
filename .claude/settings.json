@@ -43,7 +43,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.dotfiles/.claude/hooks/save-handoff.rs"
+            "command": "~/.dotfiles/.claude/hooks/handoff.rs"
           }
         ]
       }
@@ -54,7 +54,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.dotfiles/.claude/hooks/inject-handoff.rs"
+            "command": "~/.dotfiles/.claude/hooks/handoff.rs"
           }
         ]
       }

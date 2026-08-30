@@ -2,13 +2,13 @@
 ---- Workspace and Monitors ----
 --------------------------------
 
-hl.monitor({ output = "HDMI-A-2", mode = "3840x2160@60", position = "0x0", scale = 1.5 })
-hl.monitor({ output = "DP-6", mode = "2560x1440@60", position = "2560x0", scale = 1 })
+hl.monitor({ output = "desc:Samsung Electric Company LU28R55 HX5T200426", mode = "3840x2160@60", position = "0x0", scale = 1.5 })
+hl.monitor({ output = "desc:ASUSTek COMPUTER INC VG32VQ1B RCLMTF091887", mode = "2560x1440@60", position = "2560x0", scale = 1 })
 
 for i = 1, 5 do
-    hl.workspace_rule({ workspace = tostring(i), monitor = "DP-6" })
+    hl.workspace_rule({ workspace = tostring(i), monitor = "desc:ASUSTek COMPUTER INC VG32VQ1B RCLMTF091887" })
 end
-hl.workspace_rule({ workspace = "6", monitor = "HDMI-A-2" })
+hl.workspace_rule({ workspace = "6", monitor = "desc:Samsung Electric Company LU28R55 HX5T200426" })
 
 ----------------------
 ---- Window Rules ----

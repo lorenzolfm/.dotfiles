@@ -1,5 +1,5 @@
 {
-    "output": "DP-6",
+    "output": "ASUSTek COMPUTER INC VG32VQ1B RCLMTF091887",
     "layer": "top",
     "position": "top",
 
@@ -141,7 +141,8 @@
         "path": "/"
     },
     "tray": {
-        "icon-size": 20
+        "icon-size": 20,
+        "spacing": 8
     },
     "custom/notification": {
         "tooltip": false,

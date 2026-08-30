@@ -20,7 +20,7 @@ keybinds clear-defaults=true {
             }
             SwitchToMode "normal"
         }
-        bind "Ctrl a" {
+        bind "Ctrl y" {
             LaunchOrFocusPlugin "file:~/.local/share/zellij/plugins/zj-picker.wasm" {
                 floating true
                 move_to_focused_tab true

@@ -89,9 +89,10 @@ window#waybar {
 }
 
 /* claude-tray sets SNI status NeedsAttention when a session is waiting on you,
- * and waybar turns that into a `needs-attention` class. The drawn pixmap is
- * monochrome on purpose, so the cue has to be a box property: `color` does not
- * tint an image. */
+ * and waybar turns that into a `needs-attention` class. The cue has to be a box
+ * property: a tray item is a Gtk::Image, so `color` does not tint it — which is
+ * also why the applet's own colours (#fdf6e3 count, #e5c07b blocked, #e06c75
+ * fault) are drawn into the pixmap rather than set from here. */
 #tray .needs-attention {
 	border-bottom: 2px solid #e5c07b;
 }

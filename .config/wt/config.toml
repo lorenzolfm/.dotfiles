@@ -15,6 +15,9 @@ link = [
 [repos."github.com/lorenzolfm/Floresta"]
 link = []
 
+[repos."github.com/lorenzolfm/claude-ps"]
+link = []
+
 [repos."github.com/lorenzolfm/despesas"]
 link = [
     ".claude/settings.local.json",
@@ -23,6 +26,9 @@ link = [
     "frontend/.env",
     "frontend/fixtures",
 ]
+
+[repos."github.com/lorenzolfm/wt"]
+link = []
 
 [repos."github.com/lorenzolfm/zj-picker"]
 link = []

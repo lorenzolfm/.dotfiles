@@ -7,13 +7,15 @@ disable-model-invocation: true
 
 Write a handoff document summarising the current conversation so a fresh agent can continue the work.
 
-**Save it to exactly this path**, overwriting whatever is there:
+**Ask for the path — do not construct it.** Run:
 
-```
-~/.claude/handoffs/pending-<basename of the current working directory>.md
+```bash
+~/.dotfiles/.claude/hooks/handoff.rs --pending-path
 ```
 
-Create `~/.claude/handoffs/` if it does not exist. Sanitise the basename to `[A-Za-z0-9._-]`. Do not write it into the workspace, and do not invent a different filename — a `SessionStart` hook reads this exact path on the next `/clear` and injects it into the fresh session automatically. A different path means the handoff is silently lost.
+Write the document to exactly the path it prints, overwriting whatever is there. Do not adjust, normalise, or prettify that path in any way — not even a leading dot.
+
+The same program reads this path back on the next `/clear` and injects the document into the fresh session automatically. Deriving the filename yourself instead of asking has already silently lost a handoff (`~/.dotfiles` → the leading dot in `.dotfiles` was dropped), which is why the program is now the only thing that decides the name.
 
 Follow the structure and rules in `~/.dotfiles/.claude/compact-handoff.md` — read that file and use its seven sections (Goal, Current state, Key decisions, Artifacts, Traps, Suggested skills, Next action) verbatim. It is the single source of truth for handoff shape, shared with the `PreCompact` hook.
 

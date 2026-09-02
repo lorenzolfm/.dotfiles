@@ -74,10 +74,9 @@
     "enabled": false
   },
   "skipDangerousModePermissionPrompt": true,
-  "theme": "dark",
+  "theme": "custom:gruvbox",
   "remoteControlAtStartup": true,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": false,
-  "model": "opus"
+  "voiceEnabled": false
 }

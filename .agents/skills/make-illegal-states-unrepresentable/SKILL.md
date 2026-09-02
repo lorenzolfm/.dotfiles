@@ -51,7 +51,7 @@ Then connect the four layers. Read the code. Do not assume.
 
 The files in `references/stacks/` give the mechanisms. Read `references/stacks/other-stacks.md` in every review: it holds the conditional-write table for layer 2, the language-tier table for layer 3 and the boundary-format table for layer 4, and no other file has them. Then read the file for each technology in the scope — `postgres.md` when the store is Postgres, `rust.md` when the language is Rust — and skip the files for technologies that the scope does not use. A stack with no file of its own is in `other-stacks.md`; a stack that no file names at all gets *How to adapt to a new stack*, at the end of that file. Find the local mechanisms in the documentation of the store and in the code of the repository. Give each mechanism its correct name.
 
-Never propose a mechanism that the stack does not have. Never write a proposal in the style of a different technology.
+Propose only the mechanisms that this stack has, in the syntax that this stack uses. A team cannot merge a proposal in the syntax of a different technology.
 
 ### Phase 1 — Find the intended state machine
 
@@ -67,7 +67,7 @@ If you cannot name the intended states from the code, that is the most important
 
 Find where the code holds each invariant from Phase 1. Read the store definition, the access code, the types, the boundary schema and the handler. Do not guess.
 
-Work one layer at a time, and read that layer's file in `references/` before you fill its column: `layer-1-store.md`, then `layer-2-access.md`, then `layer-3-types.md`, then `layer-4-boundary.md`. Each file is a list of questions to ask of the code in front of you, and each question carries the gap code that its answer produces. A column that you fill without asking those questions is a guess.
+Before you fill the matrix, read the four layer files in `references/`: `layer-1-store.md`, `layer-2-access.md`, `layer-3-types.md` and `layer-4-boundary.md`. Each file is a list of questions to ask of the code in front of you, and each question carries the gap code that its answer produces. A column that you fill without asking those questions is a guess.
 
 ```
 Invariant                          | Store          | Access        | Types        | Boundary
@@ -113,7 +113,7 @@ Write the report below. Do not write a migration and do not change code before t
 
 ## The Report
 
-1. **The state machine now** — the states, the transitions and the invariants from Phase 1. Two sentences for each item at a maximum.
+1. **The state machine now** — the states, the transitions and the invariants from Phase 1. Name each item; the detail belongs in the findings.
 2. **The layers** — the table from Phase 0. One line for each layer. Include the limits of that layer in this stack.
 3. **The verdict** — Is the premise true? Which invariants can no writer break? Which invariants are true only by chance?
 4. **The findings**, in the sequence of severity. Give the gap code (G1 to G6), the illegal state, the path that writes it, and the fix for all four layers. The path must be real: a code path, two concurrent writes, or a manual correction by an operator.

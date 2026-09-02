@@ -78,7 +78,7 @@ impl FromSql<sql_types::NonZeroBigint, Pg> for NonZeroBigInt {
 }
 ```
 
-**Search the type modules of the repository before you propose a new type** — `types/`, `src/types/`, and whichever module holds the typed identifiers. A second type for an invariant that a type already holds is a finding. A typed identifier (never a raw `i32`) makes "this is the identifier of a different table" a compile error. It is the newtype with the highest value in a schema with many tables.
+**Search the type modules of the repository before you propose a new type**, including the module that holds the typed identifiers. A second type for an invariant that a type already holds is a finding. A typed identifier (never a raw `i32`) makes "this is the identifier of a different table" a compile error. It is the newtype with the highest value in a schema with many tables.
 
 ## Parse, do not validate
 

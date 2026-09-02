@@ -150,4 +150,4 @@ A new constraint on a table with data needs two steps. A proposal without these 
 1. Add the column or constraint in a weak form, correct the data, then use `SET NOT NULL`. Or use `ADD CONSTRAINT ... NOT VALID` and then `VALIDATE CONSTRAINT`.
 2. Deploy the writer that satisfies the invariant before the constraint that needs it.
 
-Always write `down.sql`. Test with `diesel migration run` and then `diesel migration redo`.
+Write the rollback migration. Test it with the migration tool of the repository: run the migration, roll it back, and run it again.

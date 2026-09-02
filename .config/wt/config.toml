@@ -18,6 +18,9 @@ link = []
 [repos."github.com/lorenzolfm/claude-ps"]
 link = []
 
+[repos."github.com/lorenzolfm/claude-tray"]
+link = []
+
 [repos."github.com/lorenzolfm/despesas"]
 link = [
     ".claude/settings.local.json",
@@ -26,6 +29,9 @@ link = [
     "frontend/.env",
     "frontend/fixtures",
 ]
+
+[repos."github.com/lorenzolfm/luneta"]
+link = []
 
 [repos."github.com/lorenzolfm/wt"]
 link = []

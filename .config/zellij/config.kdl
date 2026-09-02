@@ -4,29 +4,29 @@
 
 keybinds clear-defaults=true {
     normal {
-        // zj-picker: the full file: path, NOT the "zj-picker" alias. MessagePlugin does not
+        // luneta: the full file: path, NOT the "luneta" alias. MessagePlugin does not
         // resolve the alias to the running instance -- it launches a second, hidden picker
         // and messages that one. Every binding that touches the picker must use the same
         // form, and each must name its screen, or whichever key ran last decides the screen.
         bind "Ctrl j" {
-            LaunchOrFocusPlugin "file:~/.local/share/zellij/plugins/zj-picker.wasm" {
+            LaunchOrFocusPlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
                 floating true
                 move_to_focused_tab true
                 skip_plugin_cache true
             }
-            MessagePlugin "file:~/.local/share/zellij/plugins/zj-picker.wasm" {
+            MessagePlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
                 name "screen"
                 payload "sessions"
             }
             SwitchToMode "normal"
         }
         bind "Ctrl y" {
-            LaunchOrFocusPlugin "file:~/.local/share/zellij/plugins/zj-picker.wasm" {
+            LaunchOrFocusPlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
                 floating true
                 move_to_focused_tab true
                 skip_plugin_cache true
             }
-            MessagePlugin "file:~/.local/share/zellij/plugins/zj-picker.wasm" {
+            MessagePlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
                 name "screen"
                 payload "agents"
             }
@@ -136,12 +136,12 @@ keybinds clear-defaults=true {
             SwitchToMode "normal"
         }
         bind "w" {
-            LaunchOrFocusPlugin "file:~/.local/share/zellij/plugins/zj-picker.wasm" {
+            LaunchOrFocusPlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
                 floating true
                 move_to_focused_tab true
                 skip_plugin_cache true
             }
-            MessagePlugin "file:~/.local/share/zellij/plugins/zj-picker.wasm" {
+            MessagePlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
                 name "screen"
                 payload "sessions"
             }
@@ -396,7 +396,7 @@ plugins {
     welcome-screen location="zellij:session-manager" {
         welcome_screen true
     }
-    zj-picker location="file:~/.local/share/zellij/plugins/zj-picker.wasm"
+    luneta location="file:~/.local/share/zellij/plugins/luneta.wasm"
 }
 
 // Plugins to load in the background when a new session starts

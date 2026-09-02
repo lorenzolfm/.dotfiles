@@ -25,6 +25,19 @@ const RESUME: &str = "Pick up from the handoff above. Start with its \"Next acti
 const KEEP: usize = 50;
 
 fn main() -> Result<(), Box<dyn Error>> {
+    // `handoff.rs --pending-path [cwd]` prints where the /handoff skill must write.
+    // The skill asks instead of deriving the name itself: the doc is written by a
+    // model following prose, so any slug it derives can drift from `slug()` — a
+    // leading dot in `~/.dotfiles` is enough to lose a handoff silently.
+    if std::env::args().nth(1).as_deref() == Some("--pending-path") {
+        let cwd = match std::env::args().nth(2) {
+            Some(dir) => dir,
+            None => std::env::current_dir()?.to_string_lossy().into_owned(),
+        };
+        println!("{}", pending_path(&cwd)?.display());
+        return Ok(());
+    }
+
     let mut stdin = String::new();
     std::io::stdin().read_to_string(&mut stdin)?;
     match json::field(&stdin, "hook_event_name")?.as_deref() {
@@ -58,9 +71,10 @@ fn save(payload: &str) -> Result<(), Box<dyn Error>> {
 /// stdout: JSON — hookSpecificOutput.additionalContext (the doc),
 ///         .initialUserMessage (auto-resume), .sessionTitle, plus systemMessage.
 fn inject(payload: &str) -> Result<(), Box<dyn Error>> {
-    let slug = slug(&cwd(payload)?);
+    let cwd = cwd(payload)?;
+    let slug = slug(&cwd);
     let dir = handoff_dir()?;
-    let pending = dir.join(format!("pending-{slug}.md"));
+    let pending = pending_path(&cwd)?;
     if !pending.is_file() {
         return Ok(()); // plain /clear, nothing pending — stay silent
     }
@@ -150,6 +164,12 @@ fn slug(cwd: &str) -> String {
 fn handoff_dir() -> Result<PathBuf, Box<dyn Error>> {
     let home = std::env::var("HOME")?;
     Ok(PathBuf::from(home).join(".claude/handoffs"))
+}
+
+/// The one definition of where a pending handoff lives — written by the /handoff
+/// skill, read by SessionStart. Both sides go through here so they cannot disagree.
+fn pending_path(cwd: &str) -> Result<PathBuf, Box<dyn Error>> {
+    Ok(handoff_dir()?.join(format!("pending-{}.md", slug(cwd))))
 }
 
 /// Local wall-clock time, from coreutils rather than a date crate. If `date` is

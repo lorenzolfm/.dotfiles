@@ -2,7 +2,7 @@ function skills --description 'npx skills, showing dotfiles changes for manual h
     npx skills $argv
     set -l rc $status
     if contains -- "$argv[1]" add remove update
-        set -l changes (git -C ~/.dotfiles status --short .agents .claude/skills)
+        set -l changes (git -C ~/.dotfiles status --short .agents)
         if test -n "$changes"
             echo "skills: changes in ~/.dotfiles (stage & commit yourself):"
             printf '%s\n' $changes

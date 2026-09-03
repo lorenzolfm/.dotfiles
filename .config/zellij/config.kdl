@@ -20,7 +20,7 @@ keybinds clear-defaults=true {
             }
             SwitchToMode "normal"
         }
-        bind "Ctrl y" {
+        bind "Ctrl a" {
             LaunchOrFocusPlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
                 floating true
                 move_to_focused_tab true
@@ -29,6 +29,18 @@ keybinds clear-defaults=true {
             MessagePlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
                 name "screen"
                 payload "agents"
+            }
+            SwitchToMode "normal"
+        }
+        bind "Ctrl d" {
+            LaunchOrFocusPlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
+                floating true
+                move_to_focused_tab true
+                skip_plugin_cache true
+            }
+            MessagePlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
+                name "screen"
+                payload "dirs"
             }
             SwitchToMode "normal"
         }

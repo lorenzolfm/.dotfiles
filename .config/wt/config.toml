@@ -12,6 +12,9 @@ link = [
     "terraform/terraform.tfvars",
 ]
 
+[repos."github.com/lightninglabs/lightning-terminal"]
+link = []
+
 [repos."github.com/lorenzolfm/Floresta"]
 link = []
 
@@ -30,6 +33,12 @@ link = [
     "frontend/fixtures",
 ]
 
+[repos."github.com/lorenzolfm/floresta"]
+link = []
+
+[repos."github.com/lorenzolfm/homelab"]
+link = []
+
 [repos."github.com/lorenzolfm/luneta"]
 link = []
 
@@ -37,4 +46,7 @@ link = []
 link = []
 
 [repos."github.com/lorenzolfm/zj-picker"]
+link = []
+
+[repos."github.com/rust-lang/rust-clippy"]
 link = []

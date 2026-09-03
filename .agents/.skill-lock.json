@@ -235,6 +235,24 @@
       "pluginName": "mattpocock-skills",
       "installedAt": "2026-07-09T18:52:03.980Z",
       "updatedAt": "2026-07-09T18:52:03.980Z"
+    },
+    "make-illegal-states-unrepresentable": {
+      "source": "lorenzolfm/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/lorenzolfm/skills.git",
+      "skillPath": "skills/make-illegal-states-unrepresentable/SKILL.md",
+      "skillFolderHash": "85c78ae661e41815221897f8a5aa763a151e586b",
+      "installedAt": "2026-09-02T17:29:00.458Z",
+      "updatedAt": "2026-09-02T17:29:00.458Z"
+    },
+    "tigerstyle": {
+      "source": "lorenzolfm/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/lorenzolfm/skills.git",
+      "skillPath": "skills/tigerstyle/SKILL.md",
+      "skillFolderHash": "edf6ee58cd9d8a71b5737dbbe3496282ac7a1d6a",
+      "installedAt": "2026-09-02T17:46:24.605Z",
+      "updatedAt": "2026-09-02T18:02:49.299Z"
     }
   },
   "dismissed": {

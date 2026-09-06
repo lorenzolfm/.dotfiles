@@ -59,6 +59,7 @@ return {
             lua_ls = { capabilities = capabilities },
             nil_ls = { single_file_support = true, capabilities = capabilities },
             protols = { single_file_support = true, capabilities = capabilities },
+            sourcekit = { filetypes = { "swift" }, capabilities = capabilities },
             svelte = { single_file_support = true, capabilities = capabilities },
             ts_ls = { single_file_support = true, capabilities = capabilities },
             yamlls = { single_file_support = true, capabilities = capabilities },

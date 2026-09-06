@@ -1,5 +1,5 @@
 function skills --description 'npx skills, showing dotfiles changes for manual handling'
-    npx skills $argv
+    env -u XDG_STATE_HOME npx skills $argv
     set -l rc $status
     if contains -- "$argv[1]" add remove update
         set -l changes (git -C ~/.dotfiles status --short .agents)

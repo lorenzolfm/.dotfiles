@@ -6,6 +6,7 @@ return {
         conform.setup({
             formatters_by_ft = {
                 sql = { "sql_formatter" },
+                swift = { "swift_format" },
                 nix = { "nixfmt" },
                 yaml = { "yamlfmt" },
             },

@@ -1,4 +1,5 @@
 {
+  "preferredNotifChannel": "notifications_disabled",
   "attribution": {
     "sessionUrl": false
   },
@@ -13,17 +14,17 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.local/bin/claude-notify"
+            "command": "~/.dotfiles/.claude/hooks/claude-notify.rs"
           }
         ]
       }
     ],
-    "PermissionRequest": [
+    "Notification": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "~/.local/bin/claude-notify"
+            "command": "~/.dotfiles/.claude/hooks/claude-notify.rs"
           }
         ]
       }

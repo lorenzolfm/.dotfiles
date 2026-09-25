@@ -262,6 +262,15 @@
       "skillFolderHash": "0bdb821a21e793a4f6f82a7078c052154447e5cc",
       "installedAt": "2026-09-04T11:14:15.642Z",
       "updatedAt": "2026-09-04T11:14:54.856Z"
+    },
+    "test-audit": {
+      "source": "openclaw/openclaw",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/openclaw/openclaw.git",
+      "skillPath": ".agents/skills/test-audit/SKILL.md",
+      "skillFolderHash": "8015421942bcd215db0e73a13ec944d50ce01ec5",
+      "installedAt": "2026-09-25T08:51:53.583Z",
+      "updatedAt": "2026-09-25T08:51:53.583Z"
     }
   },
   "dismissed": {
@@ -269,14 +278,13 @@
   },
   "lastSelectedAgents": [
     "amp",
-    "antigravity",
-    "antigravity-cli",
     "cline",
     "codex",
     "cursor",
-    "deepagents",
+    "droid",
     "gemini-cli",
     "github-copilot",
+    "kilo",
     "kimi-code-cli",
     "opencode",
     "warp",

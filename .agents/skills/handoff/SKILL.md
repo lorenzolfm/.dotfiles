@@ -5,20 +5,12 @@ argument-hint: "What will the next session be used for?"
 disable-model-invocation: true
 ---
 
-Write a handoff document summarising the current conversation so a fresh agent can continue the work.
+Write a handoff document summarising the current conversation so a fresh agent can continue the work. Save to the temporary directory of the user's OS - not the current workspace.
 
-**Ask for the path — do not construct it.** Run:
+Include a "suggested skills" section in the document, naming which skills the next agent should call the Skill tool for.
 
-```bash
-~/.dotfiles/.claude/hooks/handoff.rs --pending-path
-```
+Do not duplicate content already captured in other artifacts (specs, plans, ADRs, issues, commits, diffs). Reference them by path or URL instead.
 
-Write the document to exactly the path it prints, overwriting whatever is there. Do not adjust, normalise, or prettify that path in any way — not even a leading dot.
+Redact any sensitive information, such as API keys, passwords, or personally identifiable information.
 
-The same program reads this path back on the next `/clear` and injects the document into the fresh session automatically. Deriving the filename yourself instead of asking has already silently lost a handoff (`~/.dotfiles` → the leading dot in `.dotfiles` was dropped), which is why the program is now the only thing that decides the name.
-
-Follow the structure and rules in `~/.dotfiles/.claude/compact-handoff.md` — read that file and use its seven sections (Goal, Current state, Key decisions, Artifacts, Traps, Suggested skills, Next action) verbatim. It is the single source of truth for handoff shape, shared with the `PreCompact` hook.
-
-If the user passed arguments, treat them as a description of what the next session will focus on, and weight the document toward it.
-
-When you are done, tell the user the doc is ready and that `/clear` will pick it up — nothing needs to be copied.
+If the user passed arguments, treat them as a description of what the next session will focus on and tailor the doc accordingly.

@@ -39,7 +39,11 @@ return {
                 local client = vim.lsp.get_client_by_id(args.data.client_id)
                 if not client then return end
 
-                if client:supports_method("textDocument/formatting") then
+                -- conform owns formatting where it has a formatter for the
+                -- filetype; a second LSP pass would overwrite its output
+                -- (nil_ls runs nixfmt over what alejandra just produced).
+                local conform_owns = #require("conform").list_formatters(args.buf) > 0
+                if client:supports_method("textDocument/formatting") and not conform_owns then
                     vim.api.nvim_create_autocmd("BufWritePre", {
                         buffer = args.buf,
                         callback = function()

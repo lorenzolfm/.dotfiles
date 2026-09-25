@@ -36,6 +36,9 @@ link = [
     "frontend/fixtures",
 ]
 
+[repos."github.com/lorenzolfm/elo"]
+link = []
+
 [repos."github.com/lorenzolfm/floresta"]
 link = []
 
@@ -49,6 +52,9 @@ link = []
 link = []
 
 [repos."github.com/lorenzolfm/zj-picker"]
+link = []
+
+[repos."github.com/romanz/electrs"]
 link = []
 
 [repos."github.com/rust-lang/rust-clippy"]

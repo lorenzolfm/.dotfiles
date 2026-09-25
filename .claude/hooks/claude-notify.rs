@@ -52,6 +52,8 @@ struct Alert {
     headline: &'static str,
     urgency: &'static str,
     sound: &'static str,
+    /// Replaces the payload's own text when that text is boilerplate.
+    body: Option<&'static str>,
 }
 
 /// The reading of an event, or `None` for one worth no interruption.
@@ -59,19 +61,33 @@ struct Alert {
 /// `notification_type` is an open vocabulary that grows with the Claude Code
 /// version, exactly like `claude-ps`'s `status`, so the wildcard arms are the
 /// contract and not a fallback: an unknown type still reaches the screen.
-fn classify(event: &str, kind: &str) -> Option<Alert> {
+fn classify(event: &str, kind: &str, message: &str) -> Option<Alert> {
     let alert = |headline, urgency, sound| {
         Some(Alert {
             headline,
             urgency,
             sound,
+            body: None,
+        })
+    };
+    // A turn asking something of its own, wearing a permission prompt.
+    let asking = |headline, body| {
+        Some(Alert {
+            headline,
+            urgency: "critical",
+            sound: "window-question.oga",
+            body: Some(body),
         })
     };
     match (event, kind) {
         // Signing in is not a reason to look at the screen — you are at it.
         ("Notification", "auth_success") => None,
         ("Notification", "permission_prompt" | "worker_permission_prompt") => {
-            alert("needs permission", "critical", "bell.oga")
+            match tool_named(message) {
+                Some("AskUserQuestion") => asking("asked you something", "Waiting on your answer"),
+                Some("ExitPlanMode") => asking("has a plan for you", "Waiting on your review"),
+                _ => alert("needs permission", "critical", "bell.oga"),
+            }
         }
         ("Notification", "agent_needs_input") => alert("needs input", "critical", "bell.oga"),
         ("Notification", "idle_prompt") => {
@@ -82,6 +98,19 @@ fn classify(event: &str, kind: &str) -> Option<Alert> {
         ("Stop", _) => alert("done", "normal", "complete.oga"),
         _ => alert("needs your attention", "normal", "bell.oga"),
     }
+}
+
+/// The tool a permission message is about.
+///
+/// Claude Code routes every interactive tool through the permission path, so
+/// the tool name is the only thing separating a question from a request to run
+/// a command. The message reads `Claude needs your permission to use <Tool>`,
+/// sometimes with the arguments trailing, and a reworded message simply yields
+/// `None` — the generic reading, which was the behaviour before this existed.
+fn tool_named(message: &str) -> Option<&str> {
+    let tail = message.rsplit_once(" to use ")?.1;
+    let tool = tail.split([' ', '(']).next()?;
+    (!tool.is_empty()).then_some(tool)
 }
 
 /// Phase one: read the payload, decide, and hand a decided notification to a
@@ -113,7 +142,7 @@ fn announce() -> Result<(), Box<dyn Error>> {
         }
     }
 
-    let Some(alert) = classify(&event, &kind) else {
+    let Some(alert) = classify(&event, &kind, &text) else {
         return Ok(());
     };
 
@@ -130,7 +159,7 @@ fn announce() -> Result<(), Box<dyn Error>> {
     };
 
     let title = format!("{label} — {}", alert.headline);
-    let body = match oneline(&text) {
+    let body = match alert.body.map(str::to_owned).unwrap_or_else(|| oneline(&text)) {
         body if body.is_empty() => FALLBACK_BODY.to_string(),
         body => body,
     };

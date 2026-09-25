@@ -9,36 +9,36 @@ keybinds clear-defaults=true {
         // and messages that one. Every binding that touches the picker must use the same
         // form, and each must name its screen, or whichever key ran last decides the screen.
         bind "Ctrl j" {
-            LaunchOrFocusPlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
+            LaunchOrFocusPlugin "https://github.com/lorenzolfm/luneta/releases/download/v0.2.2/luneta-0.2.2.wasm" {
                 floating true
                 move_to_focused_tab true
                 skip_plugin_cache true
             }
-            MessagePlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
+            MessagePlugin "https://github.com/lorenzolfm/luneta/releases/download/v0.2.2/luneta-0.2.2.wasm" {
                 name "screen"
                 payload "sessions"
             }
             SwitchToMode "normal"
         }
         bind "Ctrl a" {
-            LaunchOrFocusPlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
+            LaunchOrFocusPlugin "https://github.com/lorenzolfm/luneta/releases/download/v0.2.2/luneta-0.2.2.wasm" {
                 floating true
                 move_to_focused_tab true
                 skip_plugin_cache true
             }
-            MessagePlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
+            MessagePlugin "https://github.com/lorenzolfm/luneta/releases/download/v0.2.2/luneta-0.2.2.wasm" {
                 name "screen"
                 payload "agents"
             }
             SwitchToMode "normal"
         }
         bind "Ctrl d" {
-            LaunchOrFocusPlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
+            LaunchOrFocusPlugin "https://github.com/lorenzolfm/luneta/releases/download/v0.2.2/luneta-0.2.2.wasm" {
                 floating true
                 move_to_focused_tab true
                 skip_plugin_cache true
             }
-            MessagePlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
+            MessagePlugin "https://github.com/lorenzolfm/luneta/releases/download/v0.2.2/luneta-0.2.2.wasm" {
                 name "screen"
                 payload "dirs"
             }
@@ -148,12 +148,12 @@ keybinds clear-defaults=true {
             SwitchToMode "normal"
         }
         bind "w" {
-            LaunchOrFocusPlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
+            LaunchOrFocusPlugin "https://github.com/lorenzolfm/luneta/releases/download/v0.2.2/luneta-0.2.2.wasm" {
                 floating true
                 move_to_focused_tab true
                 skip_plugin_cache true
             }
-            MessagePlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
+            MessagePlugin "https://github.com/lorenzolfm/luneta/releases/download/v0.2.2/luneta-0.2.2.wasm" {
                 name "screen"
                 payload "sessions"
             }
@@ -408,7 +408,7 @@ plugins {
     welcome-screen location="zellij:session-manager" {
         welcome_screen true
     }
-    luneta location="file:~/.local/share/zellij/plugins/luneta.wasm"
+    luneta location="https://github.com/lorenzolfm/luneta/releases/download/v0.2.2/luneta-0.2.2.wasm"
 }
 
 // Plugins to load in the background when a new session starts

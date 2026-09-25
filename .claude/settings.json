@@ -1,5 +1,4 @@
 {
-  "preferredNotifChannel": "notifications_disabled",
   "attribution": {
     "sessionUrl": false
   },
@@ -72,11 +71,20 @@
     "lua-lsp@claude-plugins-official": true
   },
   "effortLevel": "high",
+  "modelSettings": {
+    "claude-fable-5-1": {
+      "effortLevel": "medium"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "xhigh"
+    }
+  },
   "voice": {
     "enabled": false
   },
   "skipDangerousModePermissionPrompt": true,
   "theme": "custom:gruvbox",
+  "preferredNotifChannel": "notifications_disabled",
   "remoteControlAtStartup": true,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,

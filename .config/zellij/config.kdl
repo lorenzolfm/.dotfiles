@@ -44,6 +44,26 @@ keybinds clear-defaults=true {
             }
             SwitchToMode "normal"
         }
+        // luneta's sidebar: no location, so every plugin in the session gets the
+        // message. The dock (load_plugins) answers "toggle", the sidebar the rest.
+        bind "Alt s" {
+            MessagePlugin {
+                name "sidebar"
+                payload "focus"
+            }
+        }
+        bind "Alt a" {
+            MessagePlugin {
+                name "sidebar"
+                payload "next"
+            }
+        }
+        bind "Alt b" {
+            MessagePlugin {
+                name "sidebar"
+                payload "toggle"
+            }
+        }
     }
     locked {
         bind "Ctrl e" { SwitchToMode "normal"; }
@@ -415,6 +435,12 @@ plugins {
 // eg. "file:/path/to/my-plugin.wasm"
 // eg. "https://example.com/my-plugin.wasm"
 load_plugins {
+    // luneta's dock: one sidebar to a session, kept in the tab on screen, in the
+    // column layouts/sidebar.kdl gives every tab. The local build until the
+    // sidebar ships in a release.
+    "file:~/.local/share/zellij/plugins/luneta.wasm" {
+        mode "dock"
+    }
 }
  
 // Use a simplified UI without special fonts (arrow glyphs)
@@ -446,7 +472,7 @@ default_mode "normal"
 // The name of the default layout to load on startup
 // Default: "default"
 // 
-// default_layout "compact"
+default_layout "sidebar"
  
 // The folder in which Zellij will look for layouts
 // (Requires restart)

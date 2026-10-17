@@ -1,0 +1,21 @@
+// zellij's default layout with a column on the left for luneta's sidebar: a
+// placeholder pane, which the sidebar takes the place of in the tab on screen.
+// The dock in config.kdl's load_plugins keeps the one sidebar there.
+//
+// Start a session with it: `zellij -l sidebar`, or `default_layout "sidebar"` in
+// config.kdl for every new one. A running session keeps its layout, with no
+// column for the sidebar; start it again.
+layout {
+    pane size=1 borderless=true {
+        plugin location="tab-bar"
+    }
+    pane split_direction="vertical" {
+        pane size=32 command="tail" {
+            args "-f" "/dev/null"
+        }
+        pane focus=true
+    }
+    pane size=1 borderless=true {
+        plugin location="status-bar"
+    }
+}

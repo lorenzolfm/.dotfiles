@@ -10,7 +10,7 @@ layout {
         plugin location="tab-bar"
     }
     pane split_direction="vertical" {
-        pane size=32 borderless=true command="tail" {
+        pane size=32 command="tail" {
             args "-f" "/dev/null"
         }
         pane focus=true

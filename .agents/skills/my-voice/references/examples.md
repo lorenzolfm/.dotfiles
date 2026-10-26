@@ -1,6 +1,6 @@
 # Verbatim examples
 
-These are real comments by Lorenzo, copied as posted. Typos are kept as written. Copy the shape of these comments, not the typos. `[...]` marks a cut.
+These are real comments by Lorenzo, copied as posted. Typos are kept as written. Copy the shape of these comments, not the typos. `[...]` marks a cut. Handles, commits, links and names that would point to a project are replaced with placeholders such as `@a`, `<sha>` and `<issue link>`.
 
 Contents: one-line questions · renames and direct asks · repeats · explaining · code suggestions · scope and PR hygiene · review bodies · replies on own PRs · disagreeing · pings · Portuguese
 
@@ -35,7 +35,7 @@ Contents: one-line questions · renames and direct asks · repeats · explaining
 - no expect pls
 - prefix index with table name pls
 - nit: name check
-- nit: can we avoid aliasing `HeaderVersion`? makes grep more tricky
+- nit: can we avoid aliasing `Version`? makes grep more tricky
 - i would avoid comments like these
 - do you mind turning this into a outcome as well?
 - this logic is getting a little outta hand. is it simplifiable?
@@ -73,13 +73,13 @@ Contents: one-line questions · renames and direct asks · repeats · explaining
 
 > btw, I was taking a look at bitcoin core impl and they randomize before returning to difficult eclipsing a node. Maybe its worth to shuffle the results here as well 🤔
 
-> I think this is a bit overkill. You're testing serde, not floresta. Maybe you should do something more end-to-end.
+> I think this is a bit overkill. You're testing serde, not our code. Maybe you should do something more end-to-end.
 
 > Yes, but you already called `accept_header` above, which _could_ reorg the chain, right? If you return,we throw away the rest of the message. Which is exactly what makes the fork win. So with the return we accept one fork header per headers message. A N block fork needs N messages instead of 1. And once the reorg happen in the middle of the loop, the headers after it do extend the tip, so we do want their blocks.
 
-> Imagine a scenario were we're still in `DownloadingHeaders` and some peer sends us an empty headers message.
+> Imagine a scenario were we're still in `Syncing` and some peer sends us an empty headers message.
 >
-> We switch to `LookingForForks(Instant::now())`, and 60s later the timeout calls `finish_chain_selection`. Will we have the header for the assume-utreexo block by then? If not, won't the node skip the `mark_chain_as_assumed` call?
+> We switch to `Waiting(Instant::now())`, and 60s later the timeout calls `finish_sync`. Will we have the header for the checkpoint block by then? If not, won't the node skip the `mark_checkpoint` call?
 
 > I question myself about the usefulness of some tests here. They don't test much logic, it's more like asserting that we wont change the "API". And I say in quotes because choosing how to *display* an error is != choosing which error gets *returned*.
 >
@@ -151,12 +151,12 @@ Approvals have an empty body. Bodies of comment and request-changes reviews:
 >
 > Also, would be cool to have some sort of guarantee that both runtimes end up with users in the same state.
 
-Floresta (always a COMMENT review, never APPROVE):
+Repos that follow Bitcoin Core's ACK convention (always a COMMENT review, never APPROVE):
 
-- ACK 74d1f18c574d705e4c9a894c23f86f3b1447e2f8
+- ACK <full head sha>
 - another round :)
 
-> utACK 0208daf951057543e7286f2aadaa12c73a7e0e49
+> utACK <full head sha>
 >
 > I'm not a shguy myself btw
 
@@ -164,23 +164,23 @@ Floresta (always a COMMENT review, never APPROVE):
 >
 > I think my comment on using untagged enum instead of struct might be worth taking a look at. But not a dealbreaker
 >
-> ACK f672af671500716c1a7fbd7fdf06bb6f4fa969c9
+> ACK <full head sha>
 
-> Hi @Vedd-Patel. Thanks for your work on this. Your PR is going on the right direction :)
+> Hi @x. Thanks for your work on this. Your PR is going on the right direction :)
 >
 > I've made some comments about simplifying the `Internal` variant, the value of some tests you added and notes about some changes that you may want to avoid to keep this PR on track with your goal and keep it easy for contributors to review.
 
 > Some comments. Sorry to rehash this again, but I think at least the double locking is worth to avoid.
 >
-> Btw, I think you also need to change the formula here: doc/rpc/getblockchaininfo.md
+> Btw, I think you also need to change the formula here: doc/rpc/<method>.md
 
 ## Replies on own PRs
 
-- Done in ce29b47
-- Fixed in e7ef57ab2fb6403adde0d40d365aacb3e46a8bad
+- Done in <sha>
+- Fixed in <full sha>
 - fixed on amend
-- Here you go ce29b47
-- Good point, @csgui. Checkout the new commit :)
+- Here you go <sha>
+- Good point, @x. Checkout the new commit :)
 - you're correct
 - Sounds good!
 - Dumb move by me
@@ -190,7 +190,7 @@ Floresta (always a COMMENT review, never APPROVE):
 
 > Nice catch
 >
-> 8084ea8
+> <sha>
 
 ## Disagreeing
 
@@ -220,15 +220,15 @@ Floresta (always a COMMENT review, never APPROVE):
 
 ## Pings and housekeeping
 
-- :eyes: @luisschwab @Micah-Shallom @Davidson-Souza
-- @luisschwab addressed all comments. Can you :eyes: ?
-- cc @jaoleal
+- :eyes: @a @b @c
+- @a addressed all comments. Can you :eyes: ?
+- cc @x
 - CI failed but it seems like non related to this PR. Can someone rerun the failed job for me?
-- Did you picked this up after all, @Micah-Shallom? I can review the PR if its still open
+- Did you picked this up after all, @x? I can review the PR if its still open
 
-> Closing this after discussing with @csgui the best path forward for bringing safe arithmetic to the project :)
+> Closing this after discussing with @a the best path forward for bringing safe arithmetic to the project :)
 >
-> See https://github.com/getfloresta/Floresta/issues/1016 for details
+> See <issue link> for details
 
 ## Portuguese (when the thread is in Portuguese)
 

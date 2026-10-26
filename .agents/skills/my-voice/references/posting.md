@@ -40,8 +40,8 @@ gh api repos/OWNER/REPO/pulls/N/reviews --method POST --input review.json --jq .
 ```bash
 gh pr review N -R OWNER/REPO --approve
 
-sha=$(gh pr view N -R getfloresta/Floresta --json headRefOid -q .headRefOid)
-gh pr review N -R getfloresta/Floresta --comment --body "ACK $sha"
+sha=$(gh pr view N -R OWNER/REPO --json headRefOid -q .headRefOid)
+gh pr review N -R OWNER/REPO --comment --body "ACK $sha"
 ```
 
 ## Reply in a review thread

@@ -3,7 +3,7 @@
 --------------------------------
 
 hl.monitor({ output = "desc:Samsung Electric Company LU28R55 HX5T200426", mode = "3840x2160@60", position = "0x0", scale = 1.5 })
-hl.monitor({ output = "desc:ASUSTek COMPUTER INC VG32VQ1B RCLMTF091887", mode = "2560x1440@60", position = "2560x0", scale = 1 })
+hl.monitor({ output = "desc:ASUSTek COMPUTER INC VG32VQ1B RCLMTF091887", mode = "2560x1440@165", position = "2560x0", scale = 1, vrr = 2 })
 
 for i = 1, 5 do
     hl.workspace_rule({ workspace = tostring(i), monitor = "desc:ASUSTek COMPUTER INC VG32VQ1B RCLMTF091887" })
@@ -23,6 +23,15 @@ hl.window_rule({
     -- Ignore maximize requests from all apps.
     match          = { class = ".*" },
     suppress_event = "maximize",
+})
+
+hl.window_rule({
+    -- Assetto Corsa sizes its render targets to the window it first gets, so
+    -- tiling it shrinks the game to a quarter screen. Fullscreen on the 165 Hz
+    -- panel also lets vrr = 2 kick in. The launcher's title differs, so it tiles.
+    match      = { class = "^(steam_app_244210)$", title = "^(Assetto Corsa)$" },
+    monitor    = "desc:ASUSTek COMPUTER INC VG32VQ1B RCLMTF091887",
+    fullscreen = true,
 })
 
 hl.window_rule({

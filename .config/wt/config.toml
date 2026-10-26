@@ -21,6 +21,9 @@ link = []
 [repos."github.com/lorenzolfm/Floresta"]
 link = []
 
+[repos."github.com/lorenzolfm/cdk"]
+link = []
+
 [repos."github.com/lorenzolfm/claude-ps"]
 link = []
 
@@ -46,6 +49,9 @@ link = []
 link = []
 
 [repos."github.com/lorenzolfm/luneta"]
+link = []
+
+[repos."github.com/lorenzolfm/orchard"]
 link = []
 
 [repos."github.com/lorenzolfm/wt"]

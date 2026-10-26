@@ -65,4 +65,4 @@ When the repo's issue templates set a title prefix, follow it, e.g. `[Bug] <area
 
 ## Linear
 
-Use `mcp__linear-server__save_comment` with the issue id and the body. The voice is the same as on GitHub.
+Comment with the Linear connector's comment tool, passing the issue id and the body.

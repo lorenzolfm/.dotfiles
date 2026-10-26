@@ -134,7 +134,7 @@ Contents: one-line questions · renames and direct asks · repeats · explaining
 
 ## Review bodies
 
-Approvals have an empty body. Bodies of comment and request-changes reviews:
+Bodies of comment and request-changes reviews:
 
 - some comments
 - Minor stuff only
@@ -151,7 +151,7 @@ Approvals have an empty body. Bodies of comment and request-changes reviews:
 >
 > Also, would be cool to have some sort of guarantee that both runtimes end up with users in the same state.
 
-Repos that follow Bitcoin Core's ACK convention (always a COMMENT review, never APPROVE):
+ACK reviews:
 
 - ACK <full head sha>
 - another round :)

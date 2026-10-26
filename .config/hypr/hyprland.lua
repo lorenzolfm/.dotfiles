@@ -3,7 +3,7 @@
 --------------------------------
 
 hl.monitor({ output = "desc:Samsung Electric Company LU28R55 HX5T200426", mode = "3840x2160@60", position = "0x0", scale = 1.5 })
-hl.monitor({ output = "desc:ASUSTek COMPUTER INC VG32VQ1B RCLMTF091887", mode = "2560x1440@60", position = "2560x0", scale = 1 })
+hl.monitor({ output = "desc:ASUSTek COMPUTER INC VG32VQ1B RCLMTF091887", mode = "2560x1440@165", position = "2560x0", scale = 1, vrr = 2 })
 
 for i = 1, 5 do
     hl.workspace_rule({ workspace = tostring(i), monitor = "desc:ASUSTek COMPUTER INC VG32VQ1B RCLMTF091887" })

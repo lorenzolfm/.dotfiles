@@ -26,6 +26,15 @@ hl.window_rule({
 })
 
 hl.window_rule({
+    -- Assetto Corsa sizes its render targets to the window it first gets, so
+    -- tiling it shrinks the game to a quarter screen. Fullscreen on the 165 Hz
+    -- panel also lets vrr = 2 kick in. The launcher's title differs, so it tiles.
+    match      = { class = "^(steam_app_244210)$", title = "^(Assetto Corsa)$" },
+    monitor    = "desc:ASUSTek COMPUTER INC VG32VQ1B RCLMTF091887",
+    fullscreen = true,
+})
+
+hl.window_rule({
     -- Fix some dragging issues with XWayland
     match = {
         class      = "^$",

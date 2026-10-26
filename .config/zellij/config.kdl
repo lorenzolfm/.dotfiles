@@ -8,58 +8,42 @@ keybinds clear-defaults=true {
         // resolve the alias to the running instance -- it launches a second, hidden picker
         // and messages that one. Every binding that touches the picker must use the same
         // form, and each must name its screen, or whichever key ran last decides the screen.
-        // The local build, as the dock is, until the picker's hand-off to and from the
-        // sidebar ships in a release.
+        // luneta's main, as the NixOS config builds it into /etc, not a release.
         bind "Ctrl j" {
-            LaunchOrFocusPlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
+            LaunchOrFocusPlugin "file:/etc/zellij/plugins/luneta.wasm" {
                 floating true
                 move_to_focused_tab true
                 skip_plugin_cache true
             }
-            MessagePlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
+            MessagePlugin "file:/etc/zellij/plugins/luneta.wasm" {
                 name "screen"
                 payload "sessions"
             }
             SwitchToMode "normal"
         }
         bind "Ctrl a" {
-            LaunchOrFocusPlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
+            LaunchOrFocusPlugin "file:/etc/zellij/plugins/luneta.wasm" {
                 floating true
                 move_to_focused_tab true
                 skip_plugin_cache true
             }
-            MessagePlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
+            MessagePlugin "file:/etc/zellij/plugins/luneta.wasm" {
                 name "screen"
                 payload "agents"
             }
             SwitchToMode "normal"
         }
         bind "Ctrl d" {
-            LaunchOrFocusPlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
+            LaunchOrFocusPlugin "file:/etc/zellij/plugins/luneta.wasm" {
                 floating true
                 move_to_focused_tab true
                 skip_plugin_cache true
             }
-            MessagePlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
+            MessagePlugin "file:/etc/zellij/plugins/luneta.wasm" {
                 name "screen"
                 payload "dirs"
             }
             SwitchToMode "normal"
-        }
-        // luneta's sidebar: no location, so every plugin in the session gets the
-        // message. The sidebar answers both; the picker answers "focus" too, handing
-        // the sidebar the row it has highlighted.
-        bind "Ctrl b" {
-            MessagePlugin {
-                name "sidebar"
-                payload "focus"
-            }
-        }
-        bind "Ctrl f" {
-            MessagePlugin {
-                name "sidebar"
-                payload "cycle"
-            }
         }
         // luneta's menu: the "luneta" alias, which holds the menu's keys. Not Alt m,
         // which logs out of hyprland.
@@ -176,12 +160,12 @@ keybinds clear-defaults=true {
             SwitchToMode "normal"
         }
         bind "w" {
-            LaunchOrFocusPlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
+            LaunchOrFocusPlugin "file:/etc/zellij/plugins/luneta.wasm" {
                 floating true
                 move_to_focused_tab true
                 skip_plugin_cache true
             }
-            MessagePlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
+            MessagePlugin "file:/etc/zellij/plugins/luneta.wasm" {
                 name "screen"
                 payload "sessions"
             }
@@ -432,10 +416,9 @@ plugins {
     welcome-screen location="zellij:session-manager" {
         welcome_screen true
     }
-    // The local build until the menu ships in a release. The menu (Alt a) and the
-    // sidebar's m show these keys; the sidebar has them through the dock, which is
-    // why load_plugins loads it by this alias.
-    luneta location="file:~/.local/share/zellij/plugins/luneta.wasm" {
+    // luneta's main, as the NixOS config builds it into /etc. The menu (Alt a) shows
+    // these keys.
+    luneta location="file:/etc/zellij/plugins/luneta.wasm" {
         menu {
             c "Claude" {
                 t "/thermo-nuclear-review"
@@ -450,12 +433,6 @@ plugins {
 // eg. "file:/path/to/my-plugin.wasm"
 // eg. "https://example.com/my-plugin.wasm"
 load_plugins {
-    // luneta's dock: one sidebar to a session, kept in the tab on screen, in the
-    // column layouts/sidebar.kdl gives every tab. By the alias, not its location,
-    // so the sidebar's m has the menu's keys.
-    luneta {
-        mode "dock"
-    }
 }
  
 // Use a simplified UI without special fonts (arrow glyphs)
@@ -487,7 +464,7 @@ default_mode "normal"
 // The name of the default layout to load on startup
 // Default: "default"
 // 
-default_layout "sidebar"
+// default_layout "compact"
  
 // The folder in which Zellij will look for layouts
 // (Requires restart)

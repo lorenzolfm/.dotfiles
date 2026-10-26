@@ -70,7 +70,7 @@ function cibipa
     cargo fmt && \
         ./scripts/check-allows.sh && \
         ./scripts/clippy.sh && \
-        ./scripts/test.sh
+        dev test
     ~/.local/bin/cargo-notify $status "ci"
 end
 

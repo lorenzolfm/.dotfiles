@@ -61,7 +61,7 @@ gh issue comment N -R OWNER/REPO --body-file comment.md
 gh issue create -R OWNER/REPO --title "[Bug] chain: ..." --body-file issue.md
 ```
 
-Floresta issue titles follow `[Bug] <area>: <what breaks>` or `[Enhancement] <what>`.
+When the repo's issue templates set a title prefix, follow it, e.g. `[Bug] <area>: <what breaks>` or `[Enhancement] <what>`.
 
 ## Linear
 

@@ -28,9 +28,9 @@ Use casual tokens sparingly, one or two per comment at most: btw, tho, bc, pls, 
 
 ## Review body
 
-- Approve with an empty body, except on Floresta (below). A comment or request-changes body is one short line or nothing: `some comments`, `minor stuff only`, `can you write a test?`, `call me for qa when able`. Never repeat the inline comments in the body.
+- Approve with an empty body, except in repos that ACK (below). A comment or request-changes body is one short line or nothing: `some comments`, `minor stuff only`, `can you write a test?`, `call me for qa when able`. Never repeat the inline comments in the body.
 - A PR that is too big or mixes concerns gets one or two sentences about the whole, e.g. `This is a big, complex and scary PR. I wonder if its worth splitting into smaller chunks so reviewing is easier.`
-- Floresta follows Bitcoin Core: never APPROVE. Post a COMMENT review whose last line is `ACK <full head sha>` (`utACK` when not tested). Any context goes above that line. After a re-push, ACK the new sha.
+- Some repos follow Bitcoin Core's convention, where reviewers ACK instead of approving. Their CONTRIBUTING.md or past reviews show it. There, never APPROVE. Post a COMMENT review whose last line is `ACK <full head sha>` (`utACK` when not tested). Any context goes above that line. After a re-push, ACK the new sha.
 - A first-time or outside contributor gets one warm paragraph before the comments, e.g. `Hi @x. Thanks for your work on this. Your PR is going on the right direction :)` and then one sentence naming what the comments cover.
 
 ## Replies on Lorenzo's own PRs
@@ -42,14 +42,14 @@ Use casual tokens sparingly, one or two per comment at most: btw, tho, bc, pls, 
 
 ## Issues
 
-- Use the repo's issue template headings. Floresta bugs: **Describe the bug**, **Steps to Reproduce**, **Expected behavior**. Enhancements: Summary, Motivation, Proposed change.
+- Use the headings of the repo's issue templates in `.github/ISSUE_TEMPLATE/`. Without one, a bug gets **Describe the bug**, **Steps to Reproduce**, **Expected behavior**, and an enhancement gets Summary, Motivation, Proposed change.
 - State the bug in two or three plain sentences. Then quote the code that causes it, with its path. Then say what happens, step by step. Then give the proposed fix, if there is one.
 - Write in first person with plain words, and use `I think` for opinions. Don't end with a summary.
 
 ## Language
 
-- Write in English by default. Floresta is always English.
-- Reply in the language of the thread. Lorenzo's Portuguese is chat Portuguese without accents: eh, nao, vc, pra, tbm, ta, pq, oq, sl, viajei. Keep code terms in English.
+- Write in English by default. Open-source projects are always English.
+- Anywhere else, reply in the language of the thread. Lorenzo's Portuguese is chat Portuguese without accents: eh, nao, vc, pra, tbm, ta, pq, oq, sl, viajei. Keep code terms in English.
 
 ## Never
 

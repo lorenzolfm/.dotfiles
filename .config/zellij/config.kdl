@@ -8,61 +8,69 @@ keybinds clear-defaults=true {
         // resolve the alias to the running instance -- it launches a second, hidden picker
         // and messages that one. Every binding that touches the picker must use the same
         // form, and each must name its screen, or whichever key ran last decides the screen.
+        // The local build, as the dock is, until the picker's hand-off to and from the
+        // sidebar ships in a release.
         bind "Ctrl j" {
-            LaunchOrFocusPlugin "https://github.com/lorenzolfm/luneta/releases/download/v0.2.2/luneta-0.2.2.wasm" {
+            LaunchOrFocusPlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
                 floating true
                 move_to_focused_tab true
                 skip_plugin_cache true
             }
-            MessagePlugin "https://github.com/lorenzolfm/luneta/releases/download/v0.2.2/luneta-0.2.2.wasm" {
+            MessagePlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
                 name "screen"
                 payload "sessions"
             }
             SwitchToMode "normal"
         }
         bind "Ctrl a" {
-            LaunchOrFocusPlugin "https://github.com/lorenzolfm/luneta/releases/download/v0.2.2/luneta-0.2.2.wasm" {
+            LaunchOrFocusPlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
                 floating true
                 move_to_focused_tab true
                 skip_plugin_cache true
             }
-            MessagePlugin "https://github.com/lorenzolfm/luneta/releases/download/v0.2.2/luneta-0.2.2.wasm" {
+            MessagePlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
                 name "screen"
                 payload "agents"
             }
             SwitchToMode "normal"
         }
         bind "Ctrl d" {
-            LaunchOrFocusPlugin "https://github.com/lorenzolfm/luneta/releases/download/v0.2.2/luneta-0.2.2.wasm" {
+            LaunchOrFocusPlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
                 floating true
                 move_to_focused_tab true
                 skip_plugin_cache true
             }
-            MessagePlugin "https://github.com/lorenzolfm/luneta/releases/download/v0.2.2/luneta-0.2.2.wasm" {
+            MessagePlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
                 name "screen"
                 payload "dirs"
             }
             SwitchToMode "normal"
         }
         // luneta's sidebar: no location, so every plugin in the session gets the
-        // message. The dock (load_plugins) answers "toggle", the sidebar the rest.
-        bind "Alt s" {
+        // message. The sidebar answers both; the picker answers "focus" too, handing
+        // the sidebar the row it has highlighted.
+        bind "Ctrl b" {
             MessagePlugin {
                 name "sidebar"
                 payload "focus"
             }
         }
-        bind "Alt a" {
+        bind "Ctrl f" {
             MessagePlugin {
                 name "sidebar"
-                payload "next"
+                payload "cycle"
             }
         }
-        bind "Alt b" {
-            MessagePlugin {
-                name "sidebar"
-                payload "toggle"
+        // luneta's menu: the "luneta" alias, which holds the menu's keys. Not Alt m,
+        // which logs out of hyprland.
+        bind "Alt a" {
+            LaunchOrFocusPlugin "luneta" {
+                floating true
+                move_to_focused_tab true
+                skip_plugin_cache true
+                mode "menu"
             }
+            SwitchToMode "normal"
         }
     }
     locked {
@@ -168,12 +176,12 @@ keybinds clear-defaults=true {
             SwitchToMode "normal"
         }
         bind "w" {
-            LaunchOrFocusPlugin "https://github.com/lorenzolfm/luneta/releases/download/v0.2.2/luneta-0.2.2.wasm" {
+            LaunchOrFocusPlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
                 floating true
                 move_to_focused_tab true
                 skip_plugin_cache true
             }
-            MessagePlugin "https://github.com/lorenzolfm/luneta/releases/download/v0.2.2/luneta-0.2.2.wasm" {
+            MessagePlugin "file:~/.local/share/zellij/plugins/luneta.wasm" {
                 name "screen"
                 payload "sessions"
             }
@@ -208,11 +216,7 @@ keybinds clear-defaults=true {
         bind "Super k" { MoveFocus "up"; }
         bind "Super l" { MoveFocusOrTab "right"; }
     }
-    shared_except "locked" "scroll" "search" "tmux" {
-        bind "Ctrl b" { SwitchToMode "tmux"; }
-    }
     shared_except "locked" "scroll" "search" {
-        bind "Ctrl f" { ToggleFloatingPanes; }
         bind "Ctrl s" { SwitchToMode "scroll"; }
     }
     shared_except "locked" "tab" {
@@ -428,7 +432,18 @@ plugins {
     welcome-screen location="zellij:session-manager" {
         welcome_screen true
     }
-    luneta location="https://github.com/lorenzolfm/luneta/releases/download/v0.2.2/luneta-0.2.2.wasm"
+    // The local build until the menu ships in a release. The menu (Alt a) and the
+    // sidebar's m show these keys; the sidebar has them through the dock, which is
+    // why load_plugins loads it by this alias.
+    luneta location="file:~/.local/share/zellij/plugins/luneta.wasm" {
+        menu {
+            c "Claude" {
+                t "/thermo-nuclear-review"
+                m "/make-illegal-states-unrepresentable"
+                s "/tigerstyle"
+            }
+        }
+    }
 }
 
 // Plugins to load in the background when a new session starts
@@ -436,9 +451,9 @@ plugins {
 // eg. "https://example.com/my-plugin.wasm"
 load_plugins {
     // luneta's dock: one sidebar to a session, kept in the tab on screen, in the
-    // column layouts/sidebar.kdl gives every tab. The local build until the
-    // sidebar ships in a release.
-    "file:~/.local/share/zellij/plugins/luneta.wasm" {
+    // column layouts/sidebar.kdl gives every tab. By the alias, not its location,
+    // so the sidebar's m has the menu's keys.
+    luneta {
         mode "dock"
     }
 }

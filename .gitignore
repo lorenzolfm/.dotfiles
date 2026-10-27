@@ -1,1 +1,4 @@
 .agents/skills/synced/
+.agents/skills/.trash/
+.claude/settings.json.bak
+.local/bin/orca-ide

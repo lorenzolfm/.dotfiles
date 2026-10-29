@@ -67,9 +67,9 @@ function ctest
 end
 
 function cibipa
-    cargo fmt && \
-        ./scripts/check-allows.sh && \
-        ./scripts/clippy.sh && \
+    dev fmt && \
+        dev lint && \
+        dev clippy && \
         dev test
     ~/.local/bin/cargo-notify $status "ci"
 end

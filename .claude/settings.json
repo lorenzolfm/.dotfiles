@@ -4,6 +4,10 @@
   },
   "includeCoAuthoredBy": false,
   "permissions": {
+    "allow": [
+      "Bash(python3 .agents/skills/slow-queries/scripts/insights.py *)",
+      "Bash(python3 .agents/skills/slow-queries/scripts/replica_probe.py *)"
+    ],
     "defaultMode": "auto"
   },
   "model": "opus[1m]",

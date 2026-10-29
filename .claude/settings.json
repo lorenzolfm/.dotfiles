@@ -42,16 +42,6 @@
           }
         ]
       }
-    ],
-    "PostCompact": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.dotfiles/.claude/hooks/handoff.rs"
-          }
-        ]
-      }
     ]
   },
   "statusLine": {

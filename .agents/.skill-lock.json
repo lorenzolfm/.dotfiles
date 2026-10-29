@@ -254,6 +254,15 @@
       "pluginName": "mattpocock-skills",
       "installedAt": "2026-10-29T14:27:47.634Z",
       "updatedAt": "2026-10-29T14:27:47.634Z"
+    },
+    "my-voice": {
+      "source": "lorenzolfm/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/lorenzolfm/skills.git",
+      "skillPath": "skills/my-voice/SKILL.md",
+      "skillFolderHash": "2226e7b87d9b0030c9cc3e7a70e59beb6145c368",
+      "installedAt": "2026-10-29T16:35:15.889Z",
+      "updatedAt": "2026-10-29T16:35:15.889Z"
     }
   },
   "dismissed": {

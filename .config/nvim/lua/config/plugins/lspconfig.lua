@@ -9,19 +9,35 @@ return {
                     { path = "${3rd}/luv/library", words = { "vim%.uv" } },
                 },
             },
-        }
+        },
     },
     config = function()
         local keymap = vim.keymap.set
 
-        keymap("n", "gd", function() vim.lsp.buf.definition() end)
-        keymap("n", "gh", function() vim.lsp.buf.references() end)
-        keymap("n", "<leader>d", function() vim.diagnostic.open_float() end)
-        keymap("n", "[e", function() vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR }) end)
-        keymap("n", "]e", function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR }) end)
-        keymap("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end)
-        keymap("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end)
-        keymap("n", "<F2>", function() vim.lsp.buf.rename() end);
+        keymap("n", "gd", function()
+            vim.lsp.buf.definition()
+        end)
+        keymap("n", "gh", function()
+            vim.lsp.buf.references()
+        end)
+        keymap("n", "<leader>d", function()
+            vim.diagnostic.open_float()
+        end)
+        keymap("n", "[e", function()
+            vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR })
+        end)
+        keymap("n", "]e", function()
+            vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR })
+        end)
+        keymap("n", "[d", function()
+            vim.diagnostic.jump({ count = -1 })
+        end)
+        keymap("n", "]d", function()
+            vim.diagnostic.jump({ count = 1 })
+        end)
+        keymap("n", "<F2>", function()
+            vim.lsp.buf.rename()
+        end)
 
         vim.diagnostic.config({
             signs = {
@@ -30,14 +46,16 @@ return {
                     [vim.diagnostic.severity.WARN] = "🔸",
                     [vim.diagnostic.severity.HINT] = "▫️",
                     [vim.diagnostic.severity.INFO] = "🔹",
-                }
-            }
+                },
+            },
         })
 
         vim.api.nvim_create_autocmd("LspAttach", {
             callback = function(args)
                 local client = vim.lsp.get_client_by_id(args.data.client_id)
-                if not client then return end
+                if not client then
+                    return
+                end
 
                 -- conform owns formatting where it has a formatter for the
                 -- filetype; a second LSP pass would overwrite its output
@@ -67,11 +85,11 @@ return {
             svelte = { single_file_support = true, capabilities = capabilities },
             ts_ls = { single_file_support = true, capabilities = capabilities },
             yamlls = { single_file_support = true, capabilities = capabilities },
-        };
+        }
 
         for server, config in pairs(servers) do
             vim.lsp.config(server, config)
             vim.lsp.enable(server)
         end
-    end
+    end,
 }

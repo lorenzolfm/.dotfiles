@@ -1,14 +1,5 @@
 #!/usr/bin/env rust-script
-//! Handoff hooks — two events, one script, no third-party crates.
-//!
-//! PostCompact: archive the compaction summary as a durable handoff doc.
-//!
-//! SessionStart (matcher: clear): inject a pending handoff doc into the fresh
-//! session, announce it visibly, kick off the work, then consume the doc so a
-//! later /clear never re-injects a stale handoff.
-//!
-//! Both hooks in settings.json point at this file; `hook_event_name` on stdin
-//! decides which half runs.
+//! PostCompact hook: archive the compaction summary as a durable handoff doc.
 
 use std::error::Error;
 use std::fs;
@@ -17,34 +8,16 @@ use std::path::{Path, PathBuf};
 use std::process::Command;
 use std::time::SystemTime;
 
-/// Sent as the first user message of the injected session.
-const RESUME: &str = "Pick up from the handoff above. Start with its \"Next action\" section. \
-                      Do not summarise the handoff back to me — just continue the work.";
-
 /// How many archived handoffs to keep.
 const KEEP: usize = 50;
 
 fn main() -> Result<(), Box<dyn Error>> {
-    // `handoff.rs --pending-path [cwd]` prints where the /handoff skill must write.
-    // The skill asks instead of deriving the name itself: the doc is written by a
-    // model following prose, so any slug it derives can drift from `slug()` — a
-    // leading dot in `~/.dotfiles` is enough to lose a handoff silently.
-    if std::env::args().nth(1).as_deref() == Some("--pending-path") {
-        let cwd = match std::env::args().nth(2) {
-            Some(dir) => dir,
-            None => std::env::current_dir()?.to_string_lossy().into_owned(),
-        };
-        println!("{}", pending_path(&cwd)?.display());
-        return Ok(());
-    }
-
     let mut stdin = String::new();
     std::io::stdin().read_to_string(&mut stdin)?;
-    match json::field(&stdin, "hook_event_name")?.as_deref() {
-        Some("PostCompact") => save(&stdin),
-        Some("SessionStart") => inject(&stdin),
-        _ => Ok(()),
+    if json::field(&stdin, "hook_event_name")?.as_deref() != Some("PostCompact") {
+        return Ok(());
     }
+    save(&stdin)
 }
 
 /// stdin: {"hook_event_name":"PostCompact","trigger":"manual|auto","compact_summary":"...","cwd":"..."}
@@ -67,54 +40,6 @@ fn save(payload: &str) -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
-/// stdin:  {"hook_event_name":"SessionStart","source":"clear","cwd":"...", ...}
-/// stdout: JSON — hookSpecificOutput.additionalContext (the doc),
-///         .initialUserMessage (auto-resume), .sessionTitle, plus systemMessage.
-fn inject(payload: &str) -> Result<(), Box<dyn Error>> {
-    let cwd = cwd(payload)?;
-    let slug = slug(&cwd);
-    let dir = handoff_dir()?;
-    let pending = pending_path(&cwd)?;
-    if !pending.is_file() {
-        return Ok(()); // plain /clear, nothing pending — stay silent
-    }
-
-    let doc = fs::read_to_string(&pending)?;
-    let doc = doc.trim_end_matches('\n');
-    if doc.is_empty() {
-        return Ok(());
-    }
-
-    let title = title_of(doc).unwrap_or_else(|| format!("Handoff: {slug}"));
-    let archive = dir.join(format!("{slug}-{}.md", timestamp()));
-    fs::rename(&pending, &archive)?;
-
-    prune(&dir, KEEP);
-
-    let context = format!(
-        "A handoff document from the previous session follows. \
-         Treat it as the full context for this session.\n\n{doc}"
-    );
-    let specific = json::object(&[
-        ("hookEventName", json::quote("SessionStart")),
-        ("additionalContext", json::quote(&context)),
-        ("initialUserMessage", json::quote(RESUME)),
-        ("sessionTitle", json::quote(&title)),
-    ]);
-    let announcement = format!(
-        "↩ handoff injected from the previous session — archived to {}",
-        archive.display()
-    );
-    println!(
-        "{}",
-        json::object(&[
-            ("hookSpecificOutput", specific),
-            ("systemMessage", json::quote(&announcement)),
-        ])
-    );
-    Ok(())
-}
-
 /// Drop the `<analysis>` block the compactor emits and unwrap the `<summary>` tags,
 /// leaving just the handoff body.
 fn strip_wrappers(raw: &str) -> String {
@@ -129,13 +54,6 @@ fn strip_wrappers(raw: &str) -> String {
     }
     out.push_str(rest);
     out.replace("<summary>", "").replace("</summary>", "")
-}
-
-/// The doc's first `# ` heading, capped to something that fits a session title.
-fn title_of(doc: &str) -> Option<String> {
-    let heading = doc.lines().find_map(|line| line.strip_prefix("# "))?;
-    let title: String = heading.chars().take(60).collect();
-    (!title.is_empty()).then_some(title)
 }
 
 fn cwd(payload: &str) -> Result<String, Box<dyn Error>> {
@@ -166,12 +84,6 @@ fn handoff_dir() -> Result<PathBuf, Box<dyn Error>> {
     Ok(PathBuf::from(home).join(".claude/handoffs"))
 }
 
-/// The one definition of where a pending handoff lives — written by the /handoff
-/// skill, read by SessionStart. Both sides go through here so they cannot disagree.
-fn pending_path(cwd: &str) -> Result<PathBuf, Box<dyn Error>> {
-    Ok(handoff_dir()?.join(format!("pending-{}.md", slug(cwd))))
-}
-
 /// Local wall-clock time, from coreutils rather than a date crate. If `date` is
 /// missing, epoch seconds still sort and still never collide.
 fn timestamp() -> String {
@@ -190,16 +102,12 @@ fn timestamp() -> String {
         })
 }
 
-/// Keep the `keep` most recent archives. `pending-*.md` is the skill's inbox, not an
-/// archive — it is never a pruning candidate.
+/// Keep the `keep` most recent archives.
 fn prune(dir: &Path, keep: usize) {
     let Ok(entries) = fs::read_dir(dir) else { return };
     let mut archives: Vec<(SystemTime, PathBuf)> = entries
         .flatten()
-        .filter(|entry| {
-            let name = entry.file_name().to_string_lossy().into_owned();
-            name.ends_with(".md") && !name.starts_with("pending-")
-        })
+        .filter(|entry| entry.file_name().to_string_lossy().ends_with(".md"))
         .filter_map(|entry| Some((entry.metadata().ok()?.modified().ok()?, entry.path())))
         .collect();
     archives.sort_by(|a, b| b.0.cmp(&a.0));
@@ -209,7 +117,7 @@ fn prune(dir: &Path, keep: usize) {
 }
 
 /// Just enough JSON for a hook payload: pull a string field off the top-level
-/// object, and build the object we answer with.
+/// object.
 ///
 /// The reader walks the object properly instead of searching for the key,
 /// because the payload carries arbitrary conversation text — a summary quoting
@@ -245,34 +153,6 @@ mod json {
                 other => return Err(format!("expected `,` or `}}`, found {other:?}")),
             }
         }
-    }
-
-    /// `text` as a JSON string literal, quotes included.
-    pub fn quote(text: &str) -> String {
-        let mut out = String::with_capacity(text.len() + 2);
-        out.push('"');
-        for c in text.chars() {
-            match c {
-                '"' => out.push_str("\\\""),
-                '\\' => out.push_str("\\\\"),
-                '\n' => out.push_str("\\n"),
-                '\r' => out.push_str("\\r"),
-                '\t' => out.push_str("\\t"),
-                c if (c as u32) < 0x20 => out.push_str(&format!("\\u{:04x}", c as u32)),
-                c => out.push(c),
-            }
-        }
-        out.push('"');
-        out
-    }
-
-    /// An object built from fields whose values are already encoded JSON.
-    pub fn object(fields: &[(&str, String)]) -> String {
-        let body: Vec<String> = fields
-            .iter()
-            .map(|(key, value)| format!("{}:{value}", quote(key)))
-            .collect();
-        format!("{{{}}}", body.join(","))
     }
 
     struct Parser<'a> {

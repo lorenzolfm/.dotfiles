@@ -48,17 +48,6 @@
           }
         ]
       }
-    ],
-    "SessionStart": [
-      {
-        "matcher": "clear",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.dotfiles/.claude/hooks/handoff.rs"
-          }
-        ]
-      }
     ]
   },
   "statusLine": {

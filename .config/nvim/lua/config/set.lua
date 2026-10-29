@@ -35,8 +35,12 @@ if vim.env.SSH_TTY then
             end,
         },
         paste = {
-            ["+"] = function() return osc52_cache["+"] end,
-            ["*"] = function() return osc52_cache["*"] end,
+            ["+"] = function()
+                return osc52_cache["+"]
+            end,
+            ["*"] = function()
+                return osc52_cache["*"]
+            end,
         },
     }
 end

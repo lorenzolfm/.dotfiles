@@ -6,7 +6,7 @@ return {
         vim.g.rustaceanvim = {
             server = {
                 default_settings = {
-                    ['rust-analyzer'] = {
+                    ["rust-analyzer"] = {
                         checkOnSave = false,
                         cargo = {
                             targetDir = true,

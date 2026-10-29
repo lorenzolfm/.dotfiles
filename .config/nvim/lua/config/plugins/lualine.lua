@@ -3,8 +3,8 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
         local lualine = require("lualine")
-	
-	lualine.setup({
+
+        lualine.setup({
             options = { theme = "onedark" },
             sections = {
                 lualine_a = { "mode" },
@@ -12,8 +12,8 @@ return {
                 lualine_c = { "filename" },
                 lualine_x = { "encoding", "fileformat", "filetype" },
                 lualine_y = { "progress", "selectioncount" },
-                lualine_z = { "location" }
+                lualine_z = { "location" },
             },
-	})
-    end
+        })
+    end,
 }

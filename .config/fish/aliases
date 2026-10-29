@@ -40,38 +40,35 @@ end
 function crun
     cargo build $argv
     and begin
-        ~/.local/bin/cargo-notify 0 "run"
+        ~/.local/bin/cargo-notify 0 run
         cargo run $argv
     end
-    or ~/.local/bin/cargo-notify $status "run"
+    or ~/.local/bin/cargo-notify $status run
 end
 
 function ccheck
     cargo check $argv
-    ~/.local/bin/cargo-notify $status "check"
+    ~/.local/bin/cargo-notify $status check
 end
 
 function ccheckall
     cargo check --workspace --all-targets $argv
-    ~/.local/bin/cargo-notify $status "check-all"
+    ~/.local/bin/cargo-notify $status check-all
 end
 
 function cbuild
     cargo build $argv
-    ~/.local/bin/cargo-notify $status "build"
+    ~/.local/bin/cargo-notify $status build
 end
 
 function ctest
     cargo test $argv
-    ~/.local/bin/cargo-notify $status "test"
+    ~/.local/bin/cargo-notify $status test
 end
 
 function cibipa
-    dev fmt && \
-        dev lint && \
-        dev clippy && \
-        dev test
-    ~/.local/bin/cargo-notify $status "ci"
+    dev fmt && dev lint && dev clippy && dev test
+    ~/.local/bin/cargo-notify $status ci
 end
 
 # NixOS
@@ -90,7 +87,7 @@ function bwt --wraps wt --description 'bipa worktree: make a worktree in the bip
     wt --repo ~/Projects/Work/bipa.git add $argv
 end
 
-complete -c bwt -f -n '__fish_is_first_arg' \
+complete -c bwt -f -n __fish_is_first_arg \
     -a "(wt --repo ~/Projects/Work/bipa.git __branches 2>/dev/null)"
 
 # eza

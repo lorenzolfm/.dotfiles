@@ -122,7 +122,11 @@ fn announce() -> Result<(), Box<dyn Error>> {
         payload.push_str("{}");
     }
 
-    let field = |key| json::field(&payload, key).unwrap_or_default().unwrap_or_default();
+    let field = |key| {
+        json::field(&payload, key)
+            .unwrap_or_default()
+            .unwrap_or_default()
+    };
     let event = field("hook_event_name");
     let kind = field("notification_type");
     let cwd = field("cwd");
@@ -159,7 +163,11 @@ fn announce() -> Result<(), Box<dyn Error>> {
     };
 
     let title = format!("{label} — {}", alert.headline);
-    let body = match alert.body.map(str::to_owned).unwrap_or_else(|| oneline(&text)) {
+    let body = match alert
+        .body
+        .map(str::to_owned)
+        .unwrap_or_else(|| oneline(&text))
+    {
         body if body.is_empty() => FALLBACK_BODY.to_string(),
         body => body,
     };
@@ -281,7 +289,10 @@ fn zellij_target(session_id: &str) -> Option<(String, String)> {
 /// keeps a stale `HYPRLAND_INSTANCE_SIGNATURE` — a zellij server outliving a
 /// compositor restart — from silently swallowing notifications.
 fn focused_on(session: &str) -> bool {
-    let Ok(window) = Command::new("hyprctl").args(["activewindow", "-j"]).output() else {
+    let Ok(window) = Command::new("hyprctl")
+        .args(["activewindow", "-j"])
+        .output()
+    else {
         return false;
     };
     let Ok(window) = String::from_utf8(window.stdout) else {
@@ -327,10 +338,7 @@ mod json {
         if !raw.starts_with('"') {
             return Ok(None);
         }
-        let mut parser = Parser {
-            input: raw,
-            pos: 0,
-        };
+        let mut parser = Parser { input: raw, pos: 0 };
         Ok(Some(parser.string()?))
     }
 
@@ -483,7 +491,9 @@ mod json {
             let mut code = 0;
             for _ in 0..4 {
                 let c = self.bump().ok_or("truncated `\\u` escape")?;
-                let digit = c.to_digit(16).ok_or_else(|| format!("bad hex digit `{c}`"))?;
+                let digit = c
+                    .to_digit(16)
+                    .ok_or_else(|| format!("bad hex digit `{c}`"))?;
                 code = code * 16 + digit;
             }
             Ok(code)

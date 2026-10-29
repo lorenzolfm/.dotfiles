@@ -1,14 +1,14 @@
 return {
     "j-hui/fidget.nvim",
     config = function()
-        local fidget = require("fidget");
+        local fidget = require("fidget")
 
         fidget.setup({
             progress = {
                 display = {
-                    progress_icon = "dots"
-                }
-            }
+                    progress_icon = "dots",
+                },
+            },
         })
-    end
+    end,
 }

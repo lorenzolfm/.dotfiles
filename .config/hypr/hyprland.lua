@@ -2,8 +2,19 @@
 ---- Workspace and Monitors ----
 --------------------------------
 
-hl.monitor({ output = "desc:Samsung Electric Company LU28R55 HX5T200426", mode = "3840x2160@60", position = "0x0", scale = 1.5 })
-hl.monitor({ output = "desc:ASUSTek COMPUTER INC VG32VQ1B RCLMTF091887", mode = "2560x1440@165", position = "2560x0", scale = 1, vrr = 2 })
+hl.monitor({
+    output = "desc:Samsung Electric Company LU28R55 HX5T200426",
+    mode = "3840x2160@60",
+    position = "0x0",
+    scale = 1.5,
+})
+hl.monitor({
+    output = "desc:ASUSTek COMPUTER INC VG32VQ1B RCLMTF091887",
+    mode = "2560x1440@165",
+    position = "2560x0",
+    scale = 1,
+    vrr = 2,
+})
 
 for i = 1, 5 do
     hl.workspace_rule({ workspace = tostring(i), monitor = "desc:ASUSTek COMPUTER INC VG32VQ1B RCLMTF091887" })
@@ -21,7 +32,7 @@ hl.window_rule({ match = { class = "^(Spotify)$" }, workspace = "4" })
 
 hl.window_rule({
     -- Ignore maximize requests from all apps.
-    match          = { class = ".*" },
+    match = { class = ".*" },
     suppress_event = "maximize",
 })
 
@@ -29,20 +40,20 @@ hl.window_rule({
     -- Assetto Corsa sizes its render targets to the window it first gets, so
     -- tiling it shrinks the game to a quarter screen. Fullscreen on the 165 Hz
     -- panel also lets vrr = 2 kick in. The launcher's title differs, so it tiles.
-    match      = { class = "^(steam_app_244210)$", title = "^(Assetto Corsa)$" },
-    monitor    = "desc:ASUSTek COMPUTER INC VG32VQ1B RCLMTF091887",
+    match = { class = "^(steam_app_244210)$", title = "^(Assetto Corsa)$" },
+    monitor = "desc:ASUSTek COMPUTER INC VG32VQ1B RCLMTF091887",
     fullscreen = true,
 })
 
 hl.window_rule({
     -- Fix some dragging issues with XWayland
     match = {
-        class      = "^$",
-        title      = "^$",
-        xwayland   = true,
-        float      = true,
+        class = "^$",
+        title = "^$",
+        xwayland = true,
+        float = true,
         fullscreen = false,
-        pin        = false,
+        pin = false,
     },
     no_focus = true,
 })
@@ -51,9 +62,9 @@ hl.window_rule({
 ---- Programs ----
 ------------------
 
-local terminal    = "ghostty"
+local terminal = "ghostty"
 local fileManager = "nautilus"
-local menu        = "rofi -show"
+local menu = "rofi -show"
 
 -------------------
 ---- Autostart ----
@@ -128,36 +139,36 @@ hl.bind(mod .. " + Z", hl.dsp.exec_cmd("playerctl previous"))
 
 hl.config({
     general = {
-        gaps_in          = 5,
-        gaps_out         = 20,
-        border_size      = 2,
+        gaps_in = 5,
+        gaps_out = 20,
+        border_size = 2,
 
-        col              = {
-            active_border   = "rgba(98c379ee)",
+        col = {
+            active_border = "rgba(98c379ee)",
             inactive_border = "rgba(3e4452aa)",
         },
 
         resize_on_border = false,
-        allow_tearing    = false,
-        layout           = "dwindle",
+        allow_tearing = false,
+        layout = "dwindle",
     },
 
     decoration = {
-        rounding         = 10,
-        active_opacity   = 1.0,
+        rounding = 10,
+        active_opacity = 1.0,
         inactive_opacity = 1.0,
 
-        shadow           = {
-            enabled      = true,
-            range        = 4,
+        shadow = {
+            enabled = true,
+            range = 4,
             render_power = 3,
-            color        = "rgba(1a1a1aee)",
+            color = "rgba(1a1a1aee)",
         },
 
-        blur             = {
-            enabled  = true,
-            size     = 3,
-            passes   = 1,
+        blur = {
+            enabled = true,
+            size = 3,
+            passes = 1,
             vibrancy = 0.1696,
         },
     },
@@ -176,7 +187,7 @@ hl.config({
 
     misc = {
         force_default_wallpaper = -1,
-        disable_hyprland_logo   = false,
+        disable_hyprland_logo = false,
     },
 
     cursor = {
@@ -189,7 +200,7 @@ hl.config({
 
     debug = {
         damage_tracking = 0,
-        vfr             = false,
+        vfr = false,
     },
 })
 
@@ -222,24 +233,24 @@ hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "a
 
 hl.config({
     input = {
-        kb_layout    = "us",
-        kb_variant   = "",
-        kb_model     = "",
-        kb_options   = "compose:rwin",
-        kb_rules     = "",
+        kb_layout = "us",
+        kb_variant = "",
+        kb_model = "",
+        kb_options = "compose:rwin",
+        kb_rules = "",
 
         follow_mouse = 1,
-        sensitivity  = 0,
+        sensitivity = 0,
 
-        touchpad     = {
-            natural_scroll       = false,
+        touchpad = {
+            natural_scroll = false,
             clickfinger_behavior = true,
         },
     },
 })
 
 hl.device({
-    name        = "apple-inc.-magic-trackpad",
+    name = "apple-inc.-magic-trackpad",
     sensitivity = 0.2,
 })
 
@@ -250,14 +261,14 @@ hl.gesture({ fingers = 3, direction = "vertical", action = "workspace" })
 ---------------------
 
 hl.layer_rule({
-    name         = "vicinae-blur",
-    match        = { namespace = "vicinae" },
-    blur         = true,
+    name = "vicinae-blur",
+    match = { namespace = "vicinae" },
+    blur = true,
     ignore_alpha = 0,
 })
 
 hl.layer_rule({
-    name    = "vicinae-no-animation",
-    match   = { namespace = "vicinae" },
+    name = "vicinae-no-animation",
+    match = { namespace = "vicinae" },
     no_anim = true,
 })

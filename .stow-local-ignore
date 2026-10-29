@@ -1,0 +1,28 @@
+# Stow's own defaults, which this file replaces.
+RCS
+.+,v
+
+CVS
+\.\#.+
+\.cvsignore
+
+\.svn
+_darcs
+\.hg
+
+\.git
+\.gitignore
+\.gitmodules
+
+.+~
+\#.*\#
+
+^/README.*
+^/LICENSE.*
+^/COPYING
+
+# Tooling for this repository, not configuration for $HOME.
+^/flake\.nix
+^/flake\.lock
+^/\.github
+^/result

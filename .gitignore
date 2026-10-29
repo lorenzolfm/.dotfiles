@@ -2,3 +2,7 @@
 .agents/skills/.trash/
 .claude/settings.json.bak
 .local/bin/orca-ide
+
+# nix build
+/result
+/result-*

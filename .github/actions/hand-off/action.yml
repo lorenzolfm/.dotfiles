@@ -1,0 +1,42 @@
+name: Hand off an update
+description: >
+  Saves what an update changed, as a patch and a pull request body, for the job that opens the
+  pull request. The body is $RUNNER_TEMP/body.md, which the update writes; this adds the outcome
+  of its verification.
+
+inputs:
+  name:
+    description: The update's name, and the artifact's.
+    required: true
+  verified:
+    description: The verification step's outcome.
+    required: true
+
+outputs:
+  changed:
+    description: Whether the update changed anything.
+    value: ${{ steps.patch.outputs.changed }}
+
+runs:
+  using: composite
+  steps:
+    - id: patch
+      shell: bash
+      env:
+        OUT: ${{ runner.temp }}/${{ inputs.name }}
+        VERIFIED: ${{ inputs.verified }}
+        RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      run: |
+        git add --all
+        if git diff --cached --quiet; then exit 0; fi
+        mkdir -p "$OUT"
+        git diff --cached --binary > "$OUT/update.patch"
+        { cat "$RUNNER_TEMP/body.md"; echo; echo "Verification: **$VERIFIED** ([run]($RUN))."; } > "$OUT/body.md"
+        echo changed=true >> "$GITHUB_OUTPUT"
+
+    - if: steps.patch.outputs.changed == 'true'
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+      with:
+        name: ${{ inputs.name }}
+        path: ${{ runner.temp }}/${{ inputs.name }}
+        retention-days: 7

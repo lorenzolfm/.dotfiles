@@ -1,20 +1,6 @@
 [repos."github.com/antidote-btc/project-safety-net"]
 link = []
 
-[repos."github.com/bipa-app/bipa"]
-link = [
-    ".auth",
-    ".env.override",
-    ".envrc",
-    ".volumes/lightning/data",
-]
-
-[repos."github.com/bipa-app/infra"]
-link = [
-    "terraform/.terraform",
-    "terraform/terraform.tfvars",
-]
-
 [repos."github.com/lightninglabs/lightning-terminal"]
 link = []
 

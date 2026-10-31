@@ -57,9 +57,10 @@
   "skipDangerousModePermissionPrompt": true,
   "theme": "custom:gruvbox",
   "preferredNotifChannel": "notifications_disabled",
+  "switchModelsOnFlag": false,
   "remoteControlAtStartup": true,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": false,
-  "switchModelsOnFlag": false
+  "tui": "fullscreen"
 }

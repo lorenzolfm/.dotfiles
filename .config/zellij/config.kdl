@@ -4,58 +4,6 @@
 
 keybinds clear-defaults=true {
     normal {
-        // luneta: the full file: path, NOT the "luneta" alias. MessagePlugin does not
-        // resolve the alias to the running instance -- it launches a second, hidden picker
-        // and messages that one. Every binding that touches the picker must use the same
-        // form, and each must name its screen, or whichever key ran last decides the screen.
-        // luneta's main, as the NixOS config builds it into /etc, not a release.
-        bind "Ctrl j" {
-            LaunchOrFocusPlugin "file:/etc/zellij/plugins/luneta.wasm" {
-                floating true
-                move_to_focused_tab true
-                skip_plugin_cache true
-            }
-            MessagePlugin "file:/etc/zellij/plugins/luneta.wasm" {
-                name "screen"
-                payload "sessions"
-            }
-            SwitchToMode "normal"
-        }
-        bind "Ctrl a" {
-            LaunchOrFocusPlugin "file:/etc/zellij/plugins/luneta.wasm" {
-                floating true
-                move_to_focused_tab true
-                skip_plugin_cache true
-            }
-            MessagePlugin "file:/etc/zellij/plugins/luneta.wasm" {
-                name "screen"
-                payload "agents"
-            }
-            SwitchToMode "normal"
-        }
-        bind "Ctrl d" {
-            LaunchOrFocusPlugin "file:/etc/zellij/plugins/luneta.wasm" {
-                floating true
-                move_to_focused_tab true
-                skip_plugin_cache true
-            }
-            MessagePlugin "file:/etc/zellij/plugins/luneta.wasm" {
-                name "screen"
-                payload "dirs"
-            }
-            SwitchToMode "normal"
-        }
-        // luneta's menu: the "luneta" alias, which holds the menu's keys. Not Alt m,
-        // which logs out of hyprland.
-        bind "Alt a" {
-            LaunchOrFocusPlugin "luneta" {
-                floating true
-                move_to_focused_tab true
-                skip_plugin_cache true
-                mode "menu"
-            }
-            SwitchToMode "normal"
-        }
     }
     locked {
         bind "Ctrl e" { SwitchToMode "normal"; }
@@ -160,14 +108,9 @@ keybinds clear-defaults=true {
             SwitchToMode "normal"
         }
         bind "w" {
-            LaunchOrFocusPlugin "file:/etc/zellij/plugins/luneta.wasm" {
+            LaunchOrFocusPlugin "session-manager" {
                 floating true
                 move_to_focused_tab true
-                skip_plugin_cache true
-            }
-            MessagePlugin "file:/etc/zellij/plugins/luneta.wasm" {
-                name "screen"
-                payload "sessions"
             }
             SwitchToMode "normal"
         }
@@ -415,17 +358,6 @@ plugins {
     tab-bar location="zellij:tab-bar"
     welcome-screen location="zellij:session-manager" {
         welcome_screen true
-    }
-    // luneta's main, as the NixOS config builds it into /etc. The menu (Alt a) shows
-    // these keys.
-    luneta location="file:/etc/zellij/plugins/luneta.wasm" {
-        menu {
-            c "Claude" {
-                t "/thermo-nuclear-review"
-                m "/make-illegal-states-unrepresentable"
-                s "/tigerstyle"
-            }
-        }
     }
 }
 

@@ -1,6 +1,7 @@
 ---
 name: my-voice
 description: Lorenzo's voice for anything posted under Lorenzo's GitHub or Linear account. Use when reviewing a PR, replying in a review thread, ACKing, pinging, or filing an issue.
+disable-model-invocation: true
 ---
 
 # My voice

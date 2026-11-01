@@ -1,21 +1,3 @@
-[repos."github.com/antidote-btc/project-safety-net"]
-link = []
-
-[repos."github.com/lightninglabs/lightning-terminal"]
-link = []
-
-[repos."github.com/lorenzolfm/Floresta"]
-link = []
-
-[repos."github.com/lorenzolfm/cdk"]
-link = []
-
-[repos."github.com/lorenzolfm/claude-ps"]
-link = []
-
-[repos."github.com/lorenzolfm/claude-tray"]
-link = []
-
 [repos."github.com/lorenzolfm/despesas"]
 link = [
     ".claude/settings.local.json",
@@ -24,30 +6,3 @@ link = [
     "frontend/.env",
     "frontend/fixtures",
 ]
-
-[repos."github.com/lorenzolfm/elo"]
-link = []
-
-[repos."github.com/lorenzolfm/floresta"]
-link = []
-
-[repos."github.com/lorenzolfm/homelab"]
-link = []
-
-[repos."github.com/lorenzolfm/luneta"]
-link = []
-
-[repos."github.com/lorenzolfm/orchard"]
-link = []
-
-[repos."github.com/lorenzolfm/wt"]
-link = []
-
-[repos."github.com/lorenzolfm/zj-picker"]
-link = []
-
-[repos."github.com/romanz/electrs"]
-link = []
-
-[repos."github.com/rust-lang/rust-clippy"]
-link = []

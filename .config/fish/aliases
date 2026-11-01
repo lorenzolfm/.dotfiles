@@ -66,8 +66,13 @@ function ctest
     ~/.local/bin/cargo-notify $status test
 end
 
-# NixOS
-alias rebuild='sudo nixos-rebuild switch'
+# Nix
+switch (uname)
+    case Darwin
+        alias rebuild='sudo darwin-rebuild switch --flake ~/.config/nixos'
+    case '*'
+        alias rebuild='sudo nixos-rebuild switch'
+end
 alias collect='sudo nix-collect-garbage -d'
 
 # Work

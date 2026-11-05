@@ -263,6 +263,24 @@
       "skillFolderHash": "dd837baa26c1e413dffcdd4c3bc764ef845e78a0",
       "installedAt": "2026-10-29T16:35:15.889Z",
       "updatedAt": "2026-11-01T23:32:59.343Z"
+    },
+    "cybersecurity-analyst": {
+      "source": "rysweet/amplihack",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/rysweet/amplihack.git",
+      "skillPath": "skills/cybersecurity-analyst/SKILL.md",
+      "skillFolderHash": "e5204a38fcf922d63516fcf75e0f15b99f3b95ef",
+      "installedAt": "2026-11-04T23:43:36.191Z",
+      "updatedAt": "2026-11-04T23:43:36.191Z"
+    },
+    "security-and-hardening": {
+      "source": "addyosmani/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/addyosmani/agent-skills.git",
+      "skillPath": "skills/security-and-hardening/SKILL.md",
+      "skillFolderHash": "9fb34870625f80d5cac82625f388c0d81d3b525a",
+      "installedAt": "2026-11-04T23:53:07.561Z",
+      "updatedAt": "2026-11-04T23:53:07.561Z"
     }
   },
   "dismissed": {

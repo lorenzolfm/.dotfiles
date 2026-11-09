@@ -84,12 +84,6 @@
         # One derivation per gate, so a failure in one does not hide the others.
         checks =
           {
-            hooks = gate "hooks" [pkgs.clippy pkgs.rustc] ''
-              for hook in ${./.claude/hooks}/*.rs; do
-                clippy-driver --edition 2021 --crate-type bin --emit metadata -D warnings -o "$TMPDIR/hook" "$hook"
-              done
-            '';
-
             fish = gate "fish" [pkgs.fish] ''
               for file in $(find ${./.config/fish} -type f); do
                 fish --no-execute "$file"

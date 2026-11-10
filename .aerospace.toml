@@ -1,5 +1,12 @@
 start-at-login = true
 
+# AeroSpace hides other workspaces' windows off-screen, which shrinks every window in Mission
+# Control. Grouping windows by application keeps them legible. Dock restarts only when the
+# setting changes.
+after-startup-command = [
+  'exec-and-forget [ "$(defaults read com.apple.dock expose-group-apps 2>/dev/null)" = 1 ] || { defaults write com.apple.dock expose-group-apps -bool true && killall Dock; }',
+]
+
 # Normalizations
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true

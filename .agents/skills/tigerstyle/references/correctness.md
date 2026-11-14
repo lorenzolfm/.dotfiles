@@ -64,5 +64,4 @@ Use newlines to group a resource acquisition with its matching release: a blank 
 
 - **Run the formatter.** Whatever the project's canonical formatter is, run it; do not hand-format.
 - **4 spaces of indentation**, not 2 — more obvious to the eye at a distance.
-- **100 columns**, unless the project configures its own width. Use it up, never go past it. Nothing should hide behind a horizontal scrollbar. Set a column ruler in your editor. To wrap a signature, call or data structure, add a trailing comma and let the formatter do the rest. The motivation for 100 is physical, like the 70-line function: just enough to fit two copies of the code side by side on a screen.
 - **Braces on every `if`**, unless the whole statement fits on a single line. Consistency, and defense in depth against ["goto fail;"](https://www.imperialviolet.org/2014/02/22/applebug.html) bugs.

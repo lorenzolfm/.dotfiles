@@ -12,7 +12,7 @@
 - [Call history and parameters](#call-history-and-parameters)
 - [Order within a file](#order-within-a-file)
 - [Names that leave the code](#names-that-leave-the-code)
-- [Comments and commits](#comments-and-commits)
+- [Commits](#commits)
 
 ## Case And Form
 
@@ -83,9 +83,6 @@ Think about how a name will be used *outside* the code — in documentation, a d
 
 **A noun is usually a better descriptor than an adjective or present participle**, because a noun can be used directly in prose without rephrasing. Compare `replica.pipeline` with `replica.preparing`: the first works as a section header; the second must be explained first. Nouns also compose more cleanly into derived identifiers, e.g. `config.pipeline_max`.
 
-## Comments And Commits
+## Commits
 
-- **Always say why.** Code alone is not documentation. Comments explain why you wrote it this way. Show your workings.
-- **Always say how.** A test deserves a description at the top stating its goal and methodology, so a reader can get up to speed — or skip the section — without diving in.
-- **Comments are sentences**: a space after the marker, a capital letter, and a full stop — or a colon when they introduce what follows. They are well-written prose about the code, not scribbles in the margin. A comment at the end of a line may be a phrase with no punctuation.
 - **Write descriptive commit messages** that inform and delight, because they are read. A pull request description is not stored in the git repository and is invisible in `git blame`, so it is not a replacement for a commit message.

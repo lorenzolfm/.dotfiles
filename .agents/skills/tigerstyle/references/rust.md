@@ -113,29 +113,21 @@ Static allocation is [advisory](safety.md#memory-advisory). The Rust-shaped vers
 
 ## Tooling Config
 
-`rustfmt.toml` — 100 columns and 4 spaces are already rustfmt's defaults, so state them to make the intent explicit and pin them against a future default change:
+`rustfmt.toml` — 4 spaces is already rustfmt's default, so state it to make the intent explicit and pin it against a future default change:
 
 ```toml
-max_width = 100
 tab_spaces = 4
 hard_tabs = false
-```
-
-`clippy.toml` — bring the function-length limit to TigerStyle's 70:
-
-```toml
-too-many-lines-threshold = 70
 ```
 
 Then enable the lints that enforce the rules, in `Cargo.toml`:
 
 ```toml
 [lints.clippy]
-too_many_lines = "deny"        # H1: 70 lines.
 as_conversions = "warn"        # Silent casts hide off-by-one bugs.
 cast_possible_truncation = "warn"
 indexing_slicing = "warn"      # Prefer an explicit bounds assertion.
 unwrap_in_result = "warn"
 ```
 
-Note `clippy::missing_panics_doc` and `clippy::unwrap_used` fight the assertion discipline — a deliberate panic on a broken invariant is the point. Leave them off, or allow them locally with a comment saying why the invariant holds.
+Note `clippy::missing_panics_doc` and `clippy::unwrap_used` fight the assertion discipline — a deliberate panic on a broken invariant is the point. Leave them off, or allow them locally.

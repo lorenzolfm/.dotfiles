@@ -1,6 +1,6 @@
 ---
 name: tigerstyle
-description: Apply TigerBeetle's TigerStyle when writing, editing or reviewing code — safety first, then performance, then developer experience. Covers bounded everything, assertion density, small functions, exact naming, off-by-one discipline and a zero-dependency default. The rules are language-agnostic with Rust-first examples. Use this skill when the user asks for TigerStyle or TigerBeetle style, when a repository declares TigerStyle as its convention, or to audit existing code against it.
+description: Apply TigerBeetle's TigerStyle when writing, editing or reviewing code — safety first, then performance, then developer experience. Covers bounded everything, assertion density, exact naming, off-by-one discipline and a zero-dependency default. The rules are language-agnostic with Rust-first examples. Use this skill when the user asks for TigerStyle or TigerBeetle style, when a repository declares TigerStyle as its convention, or to audit existing code against it.
 ---
 
 # TigerStyle
@@ -32,15 +32,13 @@ These are mechanically checkable. Do not break one silently. To break one, say w
 
 | # | Rule | The check | Why |
 |---|------|-----------|-----|
-| H1 | **70 lines per function, maximum** | Count the body | There is a sharp discontinuity between a function that fits on a screen and one that needs scrolling |
-| H2 | **100 columns per line, maximum** | Count the widest line | Two copies of the code fit side by side; nothing hides behind a horizontal scrollbar |
-| H3 | **Every loop and every queue has a fixed upper bound** | Name the bound for each | Fail fast: an unbounded loop is an infinite loop or a tail-latency spike that has not happened yet |
-| H4 | **A loop that cannot terminate asserts that fact** | An event loop asserts its own invariant | The exception to H3 must be deliberate and visible |
-| H5 | **Two assertions per function, on average** | Count assertions ÷ functions in the change | Assertions downgrade catastrophic correctness bugs into liveness bugs, and multiply the yield of fuzzing |
-| H6 | **Assert arguments, return values, preconditions, postconditions and invariants** | Every function checks the data it operates on | A function's purpose is to raise the probability that the program is correct |
-| H7 | **No new third-party dependency without accepted justification** | State the cost, name the alternative, wait for the user | Dependencies are supply-chain, safety, performance and install-time risk, amplified for anything foundational |
+| H1 | **Every loop and every queue has a fixed upper bound** | Name the bound for each | Fail fast: an unbounded loop is an infinite loop or a tail-latency spike that has not happened yet |
+| H2 | **A loop that cannot terminate asserts that fact** | An event loop asserts its own invariant | The exception to H1 must be deliberate and visible |
+| H3 | **Two assertions per function, on average** | Count assertions ÷ functions in the change | Assertions downgrade catastrophic correctness bugs into liveness bugs, and multiply the yield of fuzzing |
+| H4 | **Assert arguments, return values, preconditions, postconditions and invariants** | Every function checks the data it operates on | A function's purpose is to raise the probability that the program is correct |
+| H5 | **No new third-party dependency without accepted justification** | State the cost, name the alternative, wait for the user | Dependencies are supply-chain, safety, performance and install-time risk, amplified for anything foundational |
 
-Where the project configures its own limits, those replace H1 and H2. Otherwise break a rule only where the user agrees the code cannot be written another way, and say which rule and why. H7 is always a question to the user, never a unilateral `cargo add`.
+Break a rule only where the user agrees the code cannot be written another way, and say which rule and why. H5 is always a question to the user, never a unilateral `cargo add`.
 
 ## The Disciplines
 
@@ -91,18 +89,16 @@ Each line is the whole rule in short form. Read the reference file before workin
 ### Communication
 
 - **Always motivate. Always say why.** A rationale shares the criteria by which the decision can be re-evaluated.
-- Comments explain *why*, and for a test, *how* — its goal and methodology. Code alone is not documentation.
-- Comments are sentences: space after the marker, capital letter, full stop (or colon when introducing what follows). End-of-line comments may be phrases without punctuation.
 - Write descriptive commit messages. A PR description is not in `git blame` and is not a substitute.
 
 ## Rules For Working This Way
 
 - **Announce the goal a decision serves.** When you make a trade-off, name which of safety, performance or developer experience won, and what lost.
-- **Local conventions outrank this skill.** Read `CLAUDE.md`/`AGENTS.md`, the linter and the formatter config first. If the repository says 80 columns or 2-space indent, that wins over TigerStyle's 100 and 4.
+- **Local conventions outrank this skill.** Read `CLAUDE.md`/`AGENTS.md`, the linter and the formatter config first. If the repository says 2-space indent, that wins over TigerStyle's 4.
 - **Do not retrofit uninvited.** Apply TigerStyle to the code being written or changed. Reformatting untouched files is not the task.
 - **Do not add assertions as decoration.** An assertion must encode a real belief about the code. Two useless assertions per function is worse than none — it teaches the reader to ignore them.
 - **Do not confuse assertions with error handling.** Operating errors are expected and must be handled. Assertion failures are programmer errors, and crashing is the correct response.
-- **Splitting a function to satisfy H1 must improve it.** Centralize control flow in the parent, push non-branchy fragments into pure leaf helpers — "push `if`s up and `for`s down". A split that scatters branching has made the code worse; say so rather than doing it.
+- **Splitting a function must improve it.** Centralize control flow in the parent, push non-branchy fragments into pure leaf helpers — "push `if`s up and `for`s down". A split that scatters branching has made the code worse; say so rather than doing it.
 - **Zig-specific mechanisms need translation, not imitation.** Read `references/rust.md` before writing assertions, integer types or division in Rust.
 
 ## References

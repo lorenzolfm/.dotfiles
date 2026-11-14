@@ -56,7 +56,7 @@ For every property, find at least two different code paths to assert it. Assert 
 - **Split compound assertions.** `assert(a); assert(b);` beats `assert(a and b);` — simpler to read, and the failure names which half broke.
 - **Use a single-line `if` for an implication**: `if (a) assert(b)`.
 - **Assert relationships between compile-time constants** as a sanity check and as enforcement of subtle invariants or type sizes. Compile-time assertions check the program's design integrity *before it executes*, which makes them the most powerful kind.
-- **A blatantly true assertion can replace a comment** where the condition is critical and surprising. It is stronger documentation, because it cannot rot.
+- **Assert a blatantly true condition** where it is critical and surprising. The assertion documents it, and unlike prose it cannot rot.
 
 ### Assertions are not a substitute for understanding
 
@@ -64,12 +64,12 @@ A fuzzer proves the presence of bugs, never their absence. The order is:
 
 1. Build a precise mental model of the code.
 2. Encode that understanding as assertions.
-3. Write the code and comments that explain and justify the model to a reviewer.
+3. Write the code so it explains and justifies the model to a reviewer.
 4. Use simulation testing as the last line of defense — to find bugs in your and the reviewer's understanding.
 
 ## Function Shape
 
-There is a sharp discontinuity between a function that fits on a screen and one that needs scrolling. Hence the hard limit of **70 lines**. Many splits satisfy the number; few feel right:
+Many ways to split a function exist; few feel right:
 
 - **Good function shape is the inverse of an hourglass**: few parameters, a simple return type, a lot of meaty logic between the braces.
 - **Centralize control flow.** Keep the `if`s, `match`es and `switch`es in the parent; move non-branchy fragments into helpers. One function owns control flow; the rest do not care about it. This is ["push `if`s up and `for`s down"](https://matklad.github.io/2023/11/15/push-ifs-up-and-fors-down.html).

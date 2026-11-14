@@ -223,9 +223,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/lorenzolfm/skills.git",
       "skillPath": "skills/tigerstyle/SKILL.md",
-      "skillFolderHash": "edf6ee58cd9d8a71b5737dbbe3496282ac7a1d6a",
+      "skillFolderHash": "519220e07ff48b6decf2c4b38aa5567e35a853eb",
       "installedAt": "2026-09-02T17:46:24.605Z",
-      "updatedAt": "2026-09-02T18:02:49.299Z"
+      "updatedAt": "2026-11-14T15:28:58.356Z"
     },
     "show-me": {
       "source": "humanlayer/skills",
@@ -278,9 +278,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/addyosmani/agent-skills.git",
       "skillPath": "skills/security-and-hardening/SKILL.md",
-      "skillFolderHash": "9fb34870625f80d5cac82625f388c0d81d3b525a",
+      "skillFolderHash": "165116cd1e9e99c64e4015f7257bdd130545e244",
       "installedAt": "2026-11-04T23:53:07.561Z",
-      "updatedAt": "2026-11-04T23:53:07.561Z"
+      "updatedAt": "2026-11-14T15:28:58.367Z"
     }
   },
   "dismissed": {

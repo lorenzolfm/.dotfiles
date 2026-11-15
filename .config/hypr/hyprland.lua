@@ -27,7 +27,6 @@ hl.workspace_rule({ workspace = "6", monitor = "desc:Samsung Electric Company LU
 
 hl.window_rule({ match = { class = "^(com.mitchellh.ghostty)$" }, workspace = "1" })
 hl.window_rule({ match = { class = "^(google-chrome)$" }, workspace = "2" })
-hl.window_rule({ match = { class = "^(Slack)$" }, workspace = "3" })
 hl.window_rule({ match = { class = "^(Spotify)$" }, workspace = "4" })
 
 hl.window_rule({

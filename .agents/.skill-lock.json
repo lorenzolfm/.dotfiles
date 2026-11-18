@@ -291,6 +291,26 @@
       "skillFolderHash": "ccbc33ed119b28c3ef7b44a7e2081ab191ad63af",
       "installedAt": "2026-11-18T08:59:38.346Z",
       "updatedAt": "2026-11-18T08:59:38.346Z"
+    },
+    "create-verification-skill": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "commit": "35a90942a7f02e1ebbc2443643179815f2147954",
+      "skillPath": "harness/pstack/claude-code/skills/create-verification-skill/SKILL.md",
+      "skillFolderHash": "1ccf2d6f2f4c1bec790ed3105a55d8a5fce5b173",
+      "installedAt": "2026-11-18T13:39:59.166Z",
+      "updatedAt": "2026-11-18T13:39:59.166Z"
+    },
+    "statechart": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "commit": "35a90942a7f02e1ebbc2443643179815f2147954",
+      "skillPath": "harness/pstack/claude-code/skills/statechart/SKILL.md",
+      "skillFolderHash": "e7f097e74b3297b2fbb2707be7d8e336e0df8b7c",
+      "installedAt": "2026-11-18T13:43:33.414Z",
+      "updatedAt": "2026-11-18T13:43:33.414Z"
     }
   },
   "dismissed": {

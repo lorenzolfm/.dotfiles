@@ -6,9 +6,10 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/vercel-labs/agent-skills.git",
       "skillPath": "skills/web-design-guidelines/SKILL.md",
-      "skillFolderHash": "3116f3e62dbd02b44a598b1aa690d2a8938e8f89",
+      "skillFolderHash": "8ff770c9b25b9fdb5a97503fc98d86b723813031",
       "installedAt": "2026-03-11T09:25:37.155Z",
-      "updatedAt": "2026-03-11T09:25:37.155Z"
+      "updatedAt": "2026-11-23T20:47:36.620Z",
+      "commit": "5a37a6329fbad3666c3207392a6a7c0110e92efb"
     },
     "find-skills": {
       "source": "vercel-labs/skills",
@@ -306,11 +307,11 @@
       "source": "cursor/plugins",
       "sourceType": "github",
       "sourceUrl": "https://github.com/cursor/plugins.git",
-      "commit": "35a90942a7f02e1ebbc2443643179815f2147954",
+      "commit": "7a583913eb1b8d1a0ee76753d1a2cf072e7b54f9",
       "skillPath": "harness/pstack/claude-code/skills/statechart/SKILL.md",
-      "skillFolderHash": "e7f097e74b3297b2fbb2707be7d8e336e0df8b7c",
+      "skillFolderHash": "d3d60f78916e8c17a598c39738e45ab419603f06",
       "installedAt": "2026-11-18T13:43:33.414Z",
-      "updatedAt": "2026-11-18T13:43:33.414Z"
+      "updatedAt": "2026-11-23T20:47:46.871Z"
     }
   },
   "dismissed": {

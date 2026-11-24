@@ -69,7 +69,7 @@ end
 # Nix
 switch (uname)
     case Darwin
-        alias rebuild='sudo darwin-rebuild switch --flake ~/.config/nixos'
+        alias rebuild='sudo darwin-rebuild switch'
     case '*'
         alias rebuild='sudo nixos-rebuild switch'
 end

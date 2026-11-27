@@ -4,3 +4,6 @@ background-opacity = 0.8
 copy-on-select = clipboard
 right-click-action = paste
 keybind = shift+enter=text:\x1b\r
+
+# Send Option as Alt/Meta so shortcuts like alt+r work in TUIs (left only; right Option still types accents/symbols)
+macos-option-as-alt = left
